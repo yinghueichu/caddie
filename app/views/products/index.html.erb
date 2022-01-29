@@ -1,4 +1,8 @@
 <div class="container">
+<%= link_to "+Add",  new_product_path, class: "btn btn-primary"%>
+</div>
+
+<div class="container">
   <h2>products to buy</h2>
   <div class="list">
     <% @products_to_buy.each do |product| %>
@@ -14,7 +18,7 @@
   <div class="list">
     <% @products_bought.each do |product| %>
     <div class="list-item">
-      <%= product.name %>
+      <p style="text-decoration: line-through"><%= product.name %></p>
     </div>
     <% end %>
   </div>

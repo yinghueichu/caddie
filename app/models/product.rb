@@ -17,6 +17,10 @@ class Product < ApplicationRecord
     event :re_buy do
       transitions from: :bought, to: :to_buy
     end
+
+    event :archive do
+      transitions from: :to_buy, to: :archive
+    end
   end
 
 
