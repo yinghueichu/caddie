@@ -24,27 +24,22 @@ puts "Creating products.."
 
 Product.create!([
   { name: "Peanut butter",
-    state: "to buy",
     frequency: 28,
     user_id: User.first.id
   },
   { name: "Pâte à tartiner",
-    state: "to buy",
     frequency: 28,
     user_id: User.first.id
   },
   { name: "Banana",
-    state: "to buy",
     frequency: 7,
     user_id: ( User.first.id + 1)
   },
   { name: "Soy milk",
-    state: "to buy",
     frequency: 7,
     user_id: ( User.first.id + 1)
   },
   { name: "Rice cake",
-    state: "to buy",
     frequency: 14,
     user_id: ( User.first.id + 2)
   }

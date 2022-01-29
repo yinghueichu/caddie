@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @products_to_buy = Product.all.where(state: "to buy")
   end
 
   def new
