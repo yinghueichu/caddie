@@ -6,11 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.delete_all
+
 puts 'Creating users...'
 User.create!([
-  {email: "manon@caddie.io", password: "manon@caddie.io"},
-  {email: "nicolas@caddie.io", password: "nicolas@caddie.io"},
-  {email: "ying@caddie.io", password: "ying@caddie.io"},
+  {name: "Manon", email: "manon@caddie.io", password: "manon@caddie.io"},
+  {name: "Nicolas", email: "nicolas@caddie.io", password: "nicolas@caddie.io"},
+  {name: "Ying", email: "ying@caddie.io", password: "ying@caddie.io"},
 ])
 
 puts "#{User.count} users created"
