@@ -1,6 +1,11 @@
 <div class="container">
-<%= link_to "+Add",  new_product_path, class: "btn btn-primary"%>
+  <div class="fixed-action-btn">
+    <%= link_to new_product_path, class: "btn-floating btn-large red" do %>
+      <i class="large material-icons">add</i>
+    <%end %>
+  </div>
 </div>
+
 
 <div class="container">
   <h2>products to buy</h2>
