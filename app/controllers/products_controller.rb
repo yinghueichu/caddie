@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     @products_bought = Product.all.where(aasm_state: "bought")
   end
 
-  def show
+  def edit
     @product = Product.find(params[:id])
   end
 
@@ -15,13 +15,19 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save
+    @product.user = current_user
+
+    if @product.save!
+      redirect_to products_path
+    else
+      render :new
+    end
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:name, :frequency, :quantity, :unity, :description,:rating, :comment, :state, :price)
+    params.require(:product).permit(:name, :photo,:frequency, :quantity, :unity, :description,:rating, :comment, :state, :price)
   end
 
 end
