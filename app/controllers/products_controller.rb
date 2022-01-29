@@ -1,7 +1,12 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    @products_to_buy = Product.all.where(state: "to buy")
+    @products_to_buy = Product.all.where(aasm_state: "to_buy")
+    @products_bought = Product.all.where(aasm_state: "bought")
+  end
+
+  def show
+    @product = Product.find(params[:id])
   end
 
   def new
