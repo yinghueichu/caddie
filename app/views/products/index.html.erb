@@ -1,10 +1,3 @@
-<div class="container">
-  <div class="fixed-action-btn">
-    <%= link_to new_product_path, class: "btn-floating btn-large lime darken-3" do %>
-      <i class="large material-icons">add</i>
-    <%end %>
-  </div>
-</div>
 
 
 <div class="container">
@@ -26,5 +19,17 @@
       <p style="text-decoration: line-through"><%= product.name %></p>
     </div>
     <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="app-bar-bottom">
+    <span class="material-icons lime-text text-darken-3" id="shopping-cart">shopping_cart</span>
+    <div class="fixed-action-btn" id="floating-btn">
+      <%= link_to new_product_path, class: "btn-floating btn-large lime darken-3" do %>
+        <i class="large material-icons">add</i>
+      <%end %>
+    </div>
+    <span class="material-icons lime-text text-darken-3" id="chat">chat</span>
   </div>
 </div>

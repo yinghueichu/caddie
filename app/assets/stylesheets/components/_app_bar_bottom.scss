@@ -1,0 +1,20 @@
+.app-bar-bottom {
+  height: 60px;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+#floating-btn {
+  left: 43vw;
+  bottom: 48px;
+  vertical-align: top;
+  margin-right: 28px;
+
+}
