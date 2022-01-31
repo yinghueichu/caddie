@@ -1,3 +1,10 @@
+.form {
+  padding-bottom: 52px;
+}
+
+.form-group {
+   margin-bottom: 2rem;
+}
 
 .form-control {
   border-radius: 8px !important;
@@ -13,11 +20,43 @@
 
 .product_frequency {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 .product_frequency label {
   color: black;
   font-size: 16px;
   margin-top: 4px;
+}
+
+#quantity-unity {
+  display: flex;
+  justify-content: space-between;
+}
+
+#product_quantity {
+  width: 30vw !important;
+}
+
+#product_unity {
+  width: 42vw !important;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  margin: 24px;
+}
+
+#product_description {
+  width: 100% !important;
+  height: 100px;
+}
+
+.break {
+  margin-top: 48px;
+  margin-bottom: 48px;
 }

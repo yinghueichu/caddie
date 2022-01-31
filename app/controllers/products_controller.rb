@@ -18,6 +18,9 @@ class ProductsController < ApplicationController
       "Every month" => 30,
       "Personalise..." => nil
     }
+    @unit_options = [
+      "unit", "bottle", "box", "piece", "pack",
+      "gram", "kilo", "bag", "roll", "personalise..." ]
 
   end
 
