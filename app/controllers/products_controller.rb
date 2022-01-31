@@ -11,6 +11,14 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @frequency_options = {
+      "Never" => nil,
+      "Every week" => 7,
+      "Every 2 weeks" => 14,
+      "Every month" => 30,
+      "Personalise..." => nil
+    }
+
   end
 
   def create

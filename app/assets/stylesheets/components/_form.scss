@@ -1,0 +1,21 @@
+
+.form-control {
+  border-radius: 8px;
+  border: none;
+  background-color: white;
+}
+
+#product_frequency {
+  width: 50vw;
+}
+
+.product_frequency {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.product_frequency label {
+  color: black;
+  font-size: 16px;
+  margin-top: 4px;
+}

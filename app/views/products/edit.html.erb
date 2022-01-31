@@ -5,3 +5,24 @@
   <% else %>
   <% end %>
 </div>
+
+<div class="container">
+  <h2>Add new product</h2>
+  <div class="form">
+    <%= simple_form_for @product do |f| %>
+        <%= f.input :name, label:false, placeholder: "Peanut butter" %>
+        <%= f.input :photo, as: :file %>
+        <%= f.input :frequency, label: "Remind me",
+                                selected: "Never",
+                                collection: @frequency_options.map { |key, val| [key, val] },
+                                label_method: :first,
+                                value_method: :second %>
+        <%= f.input :description, placeholder: "Crunchy is preferred" %>
+        <%= f.input :quantity, placeholder: "2" %>
+        <%= f.input :unity, placeholder: "jar" %>
+        <%= f.input :price, placeholder: "6€" %>
+        <%= f.input :rating, placeholder: "5" %>
+        <%= f.submit class: 'btn btn-primary', class: "btn-large lime darken-3"  %>
+    <% end %>
+  </div>
+</div>

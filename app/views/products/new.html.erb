@@ -2,9 +2,13 @@
   <h2>Add new product</h2>
   <div class="form">
     <%= simple_form_for @product do |f| %>
-        <%= f.input :name, placeholder: "Peanut butter" %>
+        <%= f.input :name, label:false, placeholder: "Peanut butter" %>
         <%= f.input :photo, as: :file %>
-        <%= f.input :frequency, placeholder: "Every 2 weeks" %>
+        <%= f.input :frequency, label: "Remind me",
+                                selected: "Never",
+                                collection: @frequency_options.map { |key, val| [key, val] },
+                                label_method: :first,
+                                value_method: :second %>
         <%= f.input :description, placeholder: "Crunchy is preferred" %>
         <%= f.input :quantity, placeholder: "2" %>
         <%= f.input :unity, placeholder: "jar" %>
