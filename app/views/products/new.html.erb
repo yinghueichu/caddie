@@ -1,9 +1,15 @@
-<div class="container">
-  <h2>Add new product</h2>
+<div class="container mt-4">
+  <%= link_to url_for(:back), class: "btn-close" do %>
+    <span class="material-icons grey-text text-darken-4">close</span>
+  <% end %>
   <div class="form">
     <%= simple_form_for @product do |f| %>
+        <div class="photo-selector">
+        <button id="photo-placeholder"> + photo</button>
+
+        </div>
+        <%= f.input :photo, label:false, as: :file %>
         <%= f.input :name, label:false, placeholder: "Product name" %>
-        <%= f.input :photo, as: :file %>
         <%= f.input :frequency, label: "Remind me",
                                 selected: "Never",
                                 collection: @frequency_options.map { |key, val| [key, val] },
@@ -13,8 +19,6 @@
           <%= f.input :quantity, label: false, input_html: {value: f.object.quantity || '1'}  %>
           <%= f.input :unity, label: false, selected: "unit", collection: @unit_options %>
         </div>
-        <%= f.input :price, label: false, placeholder: "Price €" %>
-        <%= f.input :rating, label: false, placeholder: "Rating" %>
         <div class="break"><hr/></div>
 
         <%= f.input :description, as: :text, label: false, placeholder: "Note" %>
