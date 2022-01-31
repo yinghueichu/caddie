@@ -1,12 +1,14 @@
 
 .form-control {
-  border-radius: 8px;
-  border: none;
-  background-color: white;
+  border-radius: 8px !important;
+  border: none !important;
+  background-color: white !important;
+  padding-left: 12px !important;
+  width: 95% !important;
 }
 
 #product_frequency {
-  width: 50vw;
+  width: 50vw !important;
 }
 
 .product_frequency {
