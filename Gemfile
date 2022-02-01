@@ -40,6 +40,9 @@ gem 'aasm'
 #photo
 gem 'cloudinary', '~> 1.16.0'
 
+#food database
+gem 'openfoodfacts'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
