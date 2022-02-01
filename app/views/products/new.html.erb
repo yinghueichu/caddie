@@ -1,3 +1,4 @@
+
 <div class="container mt-4">
   <%= link_to url_for(:back), class: "btn-close" do %>
     <span class="material-icons grey-text text-darken-4">close</span>
@@ -5,8 +6,7 @@
   <div class="form">
     <%= simple_form_for @product do |f| %>
         <div class="photo-selector">
-        <button id="photo-placeholder"> + photo</button>
-
+          <button id="photo-placeholder"> + photo</button>
         </div>
         <%= f.input :photo, label:false, as: :file %>
         <%= f.input :name, label:false, placeholder: "Product name" %>
@@ -27,5 +27,8 @@
         </div>
 
     <% end %>
+  </div>
+  <div class="row">
+	  <div id="coba"></div>
   </div>
 </div>

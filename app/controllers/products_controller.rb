@@ -20,17 +20,25 @@ class ProductsController < ApplicationController
     }
     @unit_options = [
       "unit", "bottle", "box", "piece", "pack",
-      "gram", "kilo", "bag", "roll", "personalise..." ]
+      "gram", "kilo", "bag", "roll", "personalise..."]
 
   end
 
   def create
+    @frequency_options = {
+      "Never" => nil,
+      "Every week" => 7,
+      "Every 2 weeks" => 14,
+      "Every month" => 30,
+      "Personalise..." => nil
+    }
     @product = Product.new(product_params)
     @product.user = current_user
 
-    if @product.save!
+    if @product.save
       redirect_to products_path
     else
+      flash[:alert] = "Oups, please check your product info."
       render :new
     end
   end
