@@ -53,19 +53,62 @@ window.$ = $;
 
 document.addEventListener('turbolinks:load', function () {
   console.log("turbolinks ready!");
+  const realFileBtn = document.querySelector('#product_photo');
+  const customBtn = document.querySelector('#photo-placeholder');
+  const customText = document.querySelector('#file-text');
+
+  console.log(realFileBtn);
+  console.log(customBtn);
+  console.log(customText);
+
+  customBtn.addEventListener('click', function () {
+    realFileBtn.click();
+  })
+
+  console.log(realFileBtn.value);
+
+  realFileBtn.addEventListener("change", function () {
+    console.log(realFileBtn.files[0].name);
+    if (realFileBtn.files) {
+      customText.innerHTML = realFileBtn.files[0].name;
+    } else {
+      customText.innerHTML = "+ Photo";
+    }
+  });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
   console.log("DOMContentLoaded");
+  const realFileBtn = document.querySelector('#product_photo');
+  const customBtn = document.querySelector('#photo-placeholder');
+  const customText = document.querySelector('#file-text');
+
+  console.log(realFileBtn);
+  console.log(customBtn);
+  console.log(customText);
+
+  customBtn.addEventListener('click', function () {
+    realFileBtn.click();
+  })
+
+  console.log(realFileBtn.value);
+
+  realFileBtn.addEventListener("change", function () {
+    console.log(realFileBtn.files[0].name);
+    if (realFileBtn.files) {
+      customText.innerHTML = realFileBtn.files[0].name;
+    } else {
+      customText.innerHTML = "+ Photo";
+    }
+  });
 });
 
-const placeholder = document.getElementById("photo-placeholder");
-console.log(placeholder);
 
-// $(function() {
-//   $('#photo-placeholder').click(function() {
-//     console.log('jquery');
-//   })
-// })
 
-jQuery('#file').trigger('click');
+// $('#photo-placeholder').click(function () {
+//   $('#product_photo').trigger('click');
+// });
+// var selectedFile = document.getElementById("product_photo").files[0];
+// console.log(selectedFile);
+
+// $('#product_photo').val(selectedFile);

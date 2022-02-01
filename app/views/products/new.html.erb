@@ -6,9 +6,9 @@
   <div class="form">
     <%= simple_form_for @product do |f| %>
         <div class="photo-selector">
-          <button id="photo-placeholder"> + photo</button>
+          <button type="button" id="photo-placeholder"><span id="file-text">+ Photo</span></button>
         </div>
-        <%= f.input :photo, label:false, as: :file %>
+        <%= f.input :photo, label:false, as: :file, display: "none" %>
         <%= f.input :name, label:false, placeholder: "Product name" %>
         <%= f.input :frequency, label: "Remind me",
                                 selected: "Never",
@@ -20,15 +20,11 @@
           <%= f.input :unity, label: false, selected: "unit", collection: @unit_options %>
         </div>
         <div class="break"><hr/></div>
-
         <%= f.input :description, as: :text, label: false, placeholder: "Note" %>
         <div class="btn-container">
           <%= f.submit class: "btn lime darken-3"  %>
         </div>
 
     <% end %>
-  </div>
-  <div class="row">
-	  <div id="coba"></div>
   </div>
 </div>

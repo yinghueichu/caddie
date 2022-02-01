@@ -68,6 +68,7 @@
 .photo-selector {
   display: flex;
   justify-content: center;
+  margin-bottom: 32px;
 }
 
 
@@ -79,4 +80,8 @@
   background-color: #E5E5E5;
   color: #767676;
   font-size: 12px;
+}
+
+.product_photo {
+  display: none;
 }

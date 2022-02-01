@@ -7,6 +7,17 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @frequency_options = {
+      "Never" => nil,
+      "Every week" => 7,
+      "Every 2 weeks" => 14,
+      "Every month" => 30,
+      "Personalise..." => nil
+    }
+    @unit_options = [
+      "unit", "bottle", "box", "piece", "pack",
+      "gram", "kilo", "bag", "roll", "personalise..."]
+
   end
 
   def new
