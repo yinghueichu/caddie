@@ -1,0 +1,43 @@
+
+
+<div class="container">
+  <h2>Products to buy</h2>
+  <div class="list">
+    <% @products_to_buy.each do |product| %>
+    <div class="list-item-container">
+    <div class="product">
+      <span class="material-icons" id="checkbox">check_box_outline_blank</span>
+      <div class="product-info">
+        <p id="product-name"><%= product.name %></p>
+        <p id="product-brand">My favorite brand</p>
+      </div>
+    </div>
+    <div class="product-photo"></div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <h2>products bought</h2>
+  <div class="list">
+    <% @products_bought.each do |product| %>
+    <div class="list-item-container">
+
+      <p style="text-decoration: line-through" id="product-name"><%= product.name %></p>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="app-bar-bottom">
+    <span class="material-icons lime-text text-darken-3" id="shopping-cart">shopping_cart</span>
+    <div class="fixed-action-btn" id="floating-btn">
+      <%= link_to new_product_path, class: "btn-floating btn-large lime darken-3" do %>
+        <i class="large material-icons">add</i>
+      <%end %>
+    </div>
+    <span class="material-icons lime-text text-darken-3" id="chat">chat</span>
+  </div>
+</div>

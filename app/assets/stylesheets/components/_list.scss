@@ -1,0 +1,33 @@
+.list-item-container {
+  background-color: white;
+  height: 120px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 12px;
+
+}
+
+.product {
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+#product-name {
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-top: 8px;
+
+}
+
+#checkbox {
+  color: #CDCDCD;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+}
+
+
+.product-info {
+  margin-left: 16px;
+}
