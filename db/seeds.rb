@@ -32,6 +32,7 @@ Product.create!([
     user_id: User.first.id
   },
   { name: "Banana",
+    category: "Fruits",
     frequency: 7,
     user_id: ( User.first.id + 1)
   },
@@ -42,6 +43,18 @@ Product.create!([
   { name: "Rice cake",
     frequency: 14,
     user_id: ( User.first.id + 2)
+  },
+  { name: "Abricot",
+    category: "Fruits",
+    user_id: User.first.id
+  },
+  { name: "Asperges",
+    category: "Légumes",
+    user_id: User.first.id
+  },
+  { name: "Aubergines",
+    category: "Légumes",
+    user_id: User.first.id
   }
 ])
 
