@@ -1,25 +1,55 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    @products_to_buy = Product.all.where(aasm_state: "to_buy")
-    @products_bought = Product.all.where(aasm_state: "bought")
+    @products_to_buy = Product.all.where(aasm_state: "to_buy").reverse
+    @products_bought = Product.all.where(aasm_state: "bought").reverse
   end
 
   def edit
     @product = Product.find(params[:id])
+    @frequency_options = {
+      "Never" => nil,
+      "Every week" => 7,
+      "Every 2 weeks" => 14,
+      "Every month" => 30,
+      "Personalise..." => nil
+    }
+    @unit_options = [
+      "unit", "bottle", "box", "piece", "pack",
+      "gram", "kilo", "bag", "roll", "personalise..."]
+
   end
 
   def new
     @product = Product.new
+    @frequency_options = {
+      "Never" => nil,
+      "Every week" => 7,
+      "Every 2 weeks" => 14,
+      "Every month" => 30,
+      "Personalise..." => nil
+    }
+    @unit_options = [
+      "unit", "bottle", "box", "piece", "pack",
+      "gram", "kilo", "bag", "roll", "personalise..."]
+
   end
 
   def create
+    @frequency_options = {
+      "Never" => nil,
+      "Every week" => 7,
+      "Every 2 weeks" => 14,
+      "Every month" => 30,
+      "Personalise..." => nil
+    }
     @product = Product.new(product_params)
     @product.user = current_user
 
-    if @product.save!
+    if @product.save
       redirect_to products_path
     else
+      flash[:alert] = "Oups, please check your product info."
       render :new
     end
   end

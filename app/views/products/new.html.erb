@@ -1,16 +1,33 @@
-<div class="container">
-  <h2>Add new product</h2>
+
+<div class="container mt-4">
+  <%= link_to url_for(:back), class: "btn-close" do %>
+    <span class="material-icons grey-text text-darken-4">close</span>
+  <% end %>
   <div class="form">
     <%= simple_form_for @product do |f| %>
-        <%= f.input :name, placeholder: "Peanut butter" %>
-        <%= f.input :photo, as: :file %>
-        <%= f.input :frequency, placeholder: "Every 2 weeks" %>
-        <%= f.input :description, placeholder: "Crunchy is preferred" %>
-        <%= f.input :quantity, placeholder: "2" %>
-        <%= f.input :unity, placeholder: "jar" %>
-        <%= f.input :price, placeholder: "6€" %>
-        <%= f.input :rating, placeholder: "5" %>
-        <%= f.submit class: 'btn btn-primary', class: "btn-large lime darken-3"  %>
+        <div class="photo-selector">
+          <div class="image-preview" id="imagePreview">
+            <img src="" alt="Image +Preview" class="image-preview__image">
+            <span class="image-preview__text">+ Photo</span>
+          </div>
+        </div>
+        <%= f.input :photo, label:false, as: :file, display: "none" %>
+        <%= f.input :name, label:false, placeholder: "Product name" %>
+        <%= f.input :frequency, label: "Remind me",
+                                selected: "Never",
+                                collection: @frequency_options.map { |key, val| [key, val] },
+                                label_method: :first,
+                                value_method: :second %>
+        <div id="quantity-unity">
+          <%= f.input :quantity, label: false, input_html: {value: f.object.quantity || '1'}  %>
+          <%= f.input :unity, label: false, selected: "unit", collection: @unit_options %>
+        </div>
+        <div class="break"><hr/></div>
+        <%= f.input :description, as: :text, label: false, placeholder: "Note" %>
+        <div class="btn-container">
+          <%= f.submit class: "btn lime darken-3"  %>
+        </div>
+
     <% end %>
   </div>
 </div>
