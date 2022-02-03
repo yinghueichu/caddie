@@ -30,32 +30,18 @@
   </div>
 </div>
 
+
+
 <div class="container">
   <div class="app-bar-bottom">
     <span class="material-icons lime-text text-darken-3" id="shopping-cart">shopping_cart</span>
-    <div class="fixed-action-btn btn-floating btn-large lime darken-3" id="floating-btn">
-        <i class="large material-icons btn-floating btn-large lime darken-3" data-toggle="modal" data-target="#exampleModalLong">add</i>
-    </div>
+      <div class="fixed-action-btn btn-floating btn-large lime darken-3" id="floating-btn">
+        <%= link_to tags_path do %>
+          <i class="large material-icons btn-floating btn-large lime darken-3" data-toggle="modal" data-target="#exampleModalLong">add</i>
+        <% end %>
+      </div>
     <span class="material-icons lime-text text-darken-3" id="chat">chat</span>
   </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Search MVP</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <% @tags_category.each do |tag|  %>
-        <li><%= tag.name %></li>
-        <% end %>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
+

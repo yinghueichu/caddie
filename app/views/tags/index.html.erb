@@ -1,0 +1,5 @@
+<div class="container">
+  <% @tags_category.each do |tag|  %>
+      <li><%= link_to tag.name, tag_path(tag.id) %></li>
+  <% end %>
+</div>

@@ -32,7 +32,6 @@ Product.create!([
     user_id: User.first.id
   },
   { name: "Banana",
-    category: "Fruits",
     frequency: 7,
     user_id: ( User.first.id + 1)
   },
@@ -45,15 +44,12 @@ Product.create!([
     user_id: ( User.first.id + 2)
   },
   { name: "Abricot",
-    category: "Fruits",
     user_id: User.first.id
   },
   { name: "Asperges",
-    category: "Légumes",
     user_id: User.first.id
   },
   { name: "Aubergines",
-    category: "Légumes",
     user_id: User.first.id
   }
 ])
@@ -87,6 +83,7 @@ Tag.create!([
   { name: "Protein",
     group_name: "category"
   }
+
 ])
 
 puts "#{Tag.count} tags created!"
@@ -95,9 +92,7 @@ puts "#{Tag.count} tags created!"
 puts "Tagging product.."
 
 ProductTag.create!([
-  { product_id: Product.first.id,
-    tag_id: 1
-  },
+
   { product_id: ( Product.first.id + 1),
     tag_id: 1
   },
@@ -109,6 +104,18 @@ ProductTag.create!([
   },
   { product_id: ( Product.first.id + 4),
     tag_id: 3
+  },
+  { product_id: ( Product.first.id + 2),
+    tag_id: 5
+  },
+  { product_id: ( Product.first.id + 5),
+    tag_id: 5
+  },
+  { product_id: ( Product.first.id + 6),
+    tag_id: 7
+  },
+  { product_id: ( Product.first.id + 7),
+    tag_id: 7
   }
 ])
 
