@@ -1,5 +1,10 @@
-<div class="container">
-  <% @tags_category.each do |tag|  %>
-      <li><%= link_to tag.name, tag_path(tag.id) %></li>
-  <% end %>
-</div>
+
+
+<% @tags_category.each do |tag|  %>
+  <div class="card-product">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-product-infos">
+          <h2><%= link_to tag.name, tag_path(tag.id) %></h2>
+      </div>
+  </div>
+<% end %>
