@@ -1,12 +1,20 @@
-
+<div class="container">
+  <div class="app-bar-top">
+  <%= link_to lists_path do %>
+    <span class="material-icons black-text">menu</span>
+  <% end %>
+  </div>
+</div>
 
 <div class="container">
   <h2>Products to buy</h2>
   <div class="list">
     <% @products_to_buy.each do |product| %>
-    <div class="list-item-container">
+    <div class="list-item-container" id="product-<%= product.id %>">
     <div class="product">
+      <%= link_to buy_product_path(product), method: :patch, remote: true do %>
       <span class="material-icons" id="checkbox">check_box_outline_blank</span>
+      <% end %>
       <div class="product-info">
         <p id="product-name"><%= product.name %></p>
         <p id="product-brand">My favorite brand</p>

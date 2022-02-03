@@ -1,4 +1,12 @@
 <div class="container">
+  <div class="app-bar-top">
+    <%= link_to lists_path do %>
+      <span class="material-icons black-text">chevron_left</span>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
  <h2><%= @list.date %></h2>
  <p><%= current_user.name %></p>
 
