@@ -77,8 +77,6 @@ window.$ = $;
 document.addEventListener('DOMContentLoaded', function () {
   console.log("DOMContentLoaded");
   const realFileBtn = document.querySelector('#product_photo');
-  const customBtn = document.querySelector('#photo-placeholder');
-  const customText = document.querySelector('#file-text');
   const previewContainer = document.querySelector('#imagePreview');
   const previewImage = previewContainer.querySelector('.image-preview__image');
   const previewDefaultText = previewContainer.querySelector('.image-preview__text');
@@ -92,18 +90,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const file = realFileBtn.files[0];
 
     if (file) {
-      customText.innerHTML = file.name;
       const reader = new FileReader();
       previewDefaultText.style.display = 'none';
       previewImage.style.display = 'block';
       reader.addEventListener('load', function() {
-        console.log(this);
         previewImage.setAttribute('src', this.result);
       });
       reader.readAsDataURL(file);
 
     } else {
-      customText.innerHTML = "+ Photo";
       previewImage.style.display = 'none';
     }
   });
