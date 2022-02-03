@@ -85,3 +85,26 @@
 .product_photo {
   display: none;
 }
+
+#imagePreview {
+  height: 100px;
+  width: 100px;
+  border: none;
+  border-radius: 8px;
+  background-color: #E5E5E5;
+  color: #767676;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  object-fit: cover;
+}
+
+.image-preview__image {
+  display: none;
+  border-radius: 8px;
+}
+
+.image-preview__text {
+  margin-top: auto;
+  margin-bottom: auto;
+}

@@ -51,54 +51,60 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
 
-document.addEventListener('turbolinks:load', function () {
-  console.log("turbolinks ready!");
-  const realFileBtn = document.querySelector('#product_photo');
-  const customBtn = document.querySelector('#photo-placeholder');
-  const customText = document.querySelector('#file-text');
+// document.addEventListener('turbolinks:load', function () {
+//   console.log("turbolinks ready!");
+//   const realFileBtn = document.querySelector('#product_photo');
+//   const customBtn = document.querySelector('#photo-placeholder');
+//   const customText = document.querySelector('#file-text');
 
-  console.log(realFileBtn);
-  console.log(customBtn);
-  console.log(customText);
+//   customBtn.addEventListener('click', function () {
+//     realFileBtn.click();
+//   })
 
-  customBtn.addEventListener('click', function () {
-    realFileBtn.click();
-  })
+//   console.log(realFileBtn.value);
 
-  console.log(realFileBtn.value);
+//   realFileBtn.addEventListener("change", function () {
+//     console.log(realFileBtn.files[0].name);
+//     if (realFileBtn.files) {
+//       customText.innerHTML = realFileBtn.files[0].name;
+//     } else {
+//       customText.innerHTML = "+ Photo";
+//     }
+//   });
+// });
 
-  realFileBtn.addEventListener("change", function () {
-    console.log(realFileBtn.files[0].name);
-    if (realFileBtn.files) {
-      customText.innerHTML = realFileBtn.files[0].name;
-    } else {
-      customText.innerHTML = "+ Photo";
-    }
-  });
-});
 
 document.addEventListener('DOMContentLoaded', function () {
   console.log("DOMContentLoaded");
   const realFileBtn = document.querySelector('#product_photo');
   const customBtn = document.querySelector('#photo-placeholder');
   const customText = document.querySelector('#file-text');
+  const previewContainer = document.querySelector('#imagePreview');
+  const previewImage = previewContainer.querySelector('.image-preview__image');
+  const previewDefaultText = previewContainer.querySelector('.image-preview__text');
 
-  console.log(realFileBtn);
-  console.log(customBtn);
-  console.log(customText);
 
-  customBtn.addEventListener('click', function () {
+  previewContainer.addEventListener('click', function () {
     realFileBtn.click();
   })
 
-  console.log(realFileBtn.value);
-
   realFileBtn.addEventListener("change", function () {
-    console.log(realFileBtn.files[0].name);
-    if (realFileBtn.files) {
-      customText.innerHTML = realFileBtn.files[0].name;
+    const file = realFileBtn.files[0];
+
+    if (file) {
+      customText.innerHTML = file.name;
+      const reader = new FileReader();
+      previewDefaultText.style.display = 'none';
+      previewImage.style.display = 'block';
+      reader.addEventListener('load', function() {
+        console.log(this);
+        previewImage.setAttribute('src', this.result);
+      });
+      reader.readAsDataURL(file);
+
     } else {
       customText.innerHTML = "+ Photo";
+      previewImage.style.display = 'none';
     }
   });
 });

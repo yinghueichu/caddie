@@ -6,7 +6,10 @@
   <div class="form">
     <%= simple_form_for @product do |f| %>
         <div class="photo-selector">
-          <button type="button" id="photo-placeholder"><span id="file-text">+ Photo</span></button>
+          <div class="image-preview" id="imagePreview">
+            <img src="" alt="Image +Preview" class="image-preview__image">
+            <span class="image-preview__text">+ Photo</span>
+          </div>
         </div>
         <%= f.input :photo, label:false, as: :file, display: "none" %>
         <%= f.input :name, label:false, placeholder: "Product name" %>
