@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    @products_to_buy = Product.all.where(aasm_state: "to_buy")
-    @products_bought = Product.all.where(aasm_state: "bought")
+    @products_to_buy = Product.all.where(aasm_state: "to_buy").reverse
+    @products_bought = Product.all.where(aasm_state: "bought").reverse
   end
 
   def edit

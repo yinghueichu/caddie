@@ -51,31 +51,8 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
 
-// document.addEventListener('turbolinks:load', function () {
-//   console.log("turbolinks ready!");
-//   const realFileBtn = document.querySelector('#product_photo');
-//   const customBtn = document.querySelector('#photo-placeholder');
-//   const customText = document.querySelector('#file-text');
-
-//   customBtn.addEventListener('click', function () {
-//     realFileBtn.click();
-//   })
-
-//   console.log(realFileBtn.value);
-
-//   realFileBtn.addEventListener("change", function () {
-//     console.log(realFileBtn.files[0].name);
-//     if (realFileBtn.files) {
-//       customText.innerHTML = realFileBtn.files[0].name;
-//     } else {
-//       customText.innerHTML = "+ Photo";
-//     }
-//   });
-// });
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  console.log("DOMContentLoaded");
+document.addEventListener('turbolinks:load', function () {
+  console.log("turbolinks ready!");
   const realFileBtn = document.querySelector('#product_photo');
   const previewContainer = document.querySelector('#imagePreview');
   const previewImage = previewContainer.querySelector('.image-preview__image');
@@ -93,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const reader = new FileReader();
       previewDefaultText.style.display = 'none';
       previewImage.style.display = 'block';
-      reader.addEventListener('load', function() {
+      reader.addEventListener('load', function () {
         previewImage.setAttribute('src', this.result);
       });
       reader.readAsDataURL(file);
@@ -105,11 +82,32 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// document.addEventListener('DOMContentLoaded', function () {
+//   console.log("DOMContentLoaded");
+//   const realFileBtn = document.querySelector('#product_photo');
+//   const previewContainer = document.querySelector('#imagePreview');
+//   const previewImage = previewContainer.querySelector('.image-preview__image');
+//   const previewDefaultText = previewContainer.querySelector('.image-preview__text');
 
-// $('#photo-placeholder').click(function () {
-//   $('#product_photo').trigger('click');
+
+//   previewContainer.addEventListener('click', function () {
+//     realFileBtn.click();
+//   })
+
+//   realFileBtn.addEventListener("change", function () {
+//     const file = realFileBtn.files[0];
+
+//     if (file) {
+//       const reader = new FileReader();
+//       previewDefaultText.style.display = 'none';
+//       previewImage.style.display = 'block';
+//       reader.addEventListener('load', function() {
+//         previewImage.setAttribute('src', this.result);
+//       });
+//       reader.readAsDataURL(file);
+
+//     } else {
+//       previewImage.style.display = 'none';
+//     }
+//   });
 // });
-// var selectedFile = document.getElementById("product_photo").files[0];
-// console.log(selectedFile);
-
-// $('#product_photo').val(selectedFile);
