@@ -1,0 +1,9 @@
+<div class="container">
+ <h2><%= @list.date %></h2>
+ <p><%= current_user.name %></p>
+
+
+  <% @products_by_list.each do |p| %>
+    <%= p.name %>
+  <% end %>
+</div>
