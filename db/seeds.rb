@@ -76,16 +76,16 @@ Tag.create!([
     group_name: "regime"
   },
   { name: "Fruit",
-    group_name: "section"
+    group_name: "category"
   },
   { name: "Snack",
-    group_name: "section"
+    group_name: "category"
   },
   { name: "Veggies",
-    group_name: "section"
+    group_name: "category"
   },
   { name: "Protein",
-    group_name: "section"
+    group_name: "category"
   }
 ])
 
