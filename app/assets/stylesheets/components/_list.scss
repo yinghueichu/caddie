@@ -29,8 +29,25 @@
 
 .product-info {
   margin-left: 16px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .list {
   margin-bottom: 68px;
+}
+
+.list-photo {
+  height: 60px;
+  width: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.checkbox-link {
+  margin-right: 12px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
