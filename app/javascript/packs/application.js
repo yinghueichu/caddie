@@ -53,50 +53,56 @@ window.$ = $;
 document.addEventListener('turbolinks:load', function () {
   console.log("turbolinks ready!");
 
+
+
   const nav = document.querySelector('.nav');
   const navBtn = document.querySelector('#btnNav');
   const overlay = document.querySelector('.nav__overlay');
   const navBack = document.querySelector('#nav__link_back');
 
-  console.log(navBtn);
+  if (nav) {
+    navBtn.addEventListener("click", function () {
+      nav.classList.add("nav--open");
+    })
 
-  navBtn.addEventListener("click", function () {
-    nav.classList.add("nav--open");
-  })
+    overlay.addEventListener("click", function () {
+      nav.classList.remove("nav--open");
+    })
 
-  overlay.addEventListener("click", function () {
-    nav.classList.remove("nav--open");
-  })
+    navBack.addEventListener("click", function () {
+      nav.classList.remove("nav--open");
+    })
+  }
 
-  navBack.addEventListener("click", function () {
-    nav.classList.remove("nav--open");
-  })
 
   const realFileBtn = document.querySelector('#product_photo');
   const previewContainer = document.querySelector('#imagePreview');
   const previewImage = previewContainer.querySelector('.image-preview__image');
   const previewDefaultText = previewContainer.querySelector('.image-preview__text');
 
-  previewContainer.addEventListener('click', function () {
-    realFileBtn.click();
-  })
+  if (realFileBtn) {
+    previewContainer.addEventListener('click', function () {
+      realFileBtn.click();
+    })
 
-  realFileBtn.addEventListener("change", function () {
-    const file = realFileBtn.files[0];
+    realFileBtn.addEventListener("change", function () {
+      const file = realFileBtn.files[0];
 
-    if (file) {
-      const reader = new FileReader();
-      previewDefaultText.style.display = 'none';
-      previewImage.style.display = 'block';
-      reader.addEventListener('load', function () {
-        previewImage.setAttribute('src', this.result);
-      });
-      reader.readAsDataURL(file);
+      if (file) {
+        const reader = new FileReader();
+        previewDefaultText.style.display = 'none';
+        previewImage.style.display = 'block';
+        reader.addEventListener('load', function () {
+          previewImage.setAttribute('src', this.result);
+        });
+        reader.readAsDataURL(file);
 
-    } else {
-      previewImage.style.display = 'none';
-    }
-  });
+      } else {
+        previewImage.style.display = 'none';
+      }
+    });
+  }
+
 
 
 
