@@ -7,7 +7,7 @@
 </div>
 
 <div class="container" id="product-by-list-container">
- <h2><%= @list.date.strftime("%d/%m/%Y") %></h2>
+ <h2><%= @list.date.strftime("%d %h %Y") %></h2>
  <p><%= current_user.name %></p>
 
   <% @products_by_list.each do |product| %>

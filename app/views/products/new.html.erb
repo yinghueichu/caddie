@@ -12,7 +12,7 @@
           </div>
         </div>
         <%= f.input :photo, label:false, as: :file, display: "none" %>
-        <%= f.input :name, label:false, placeholder: "Product name" %>
+        <%= f.input :name, label:false, autofocus: true, placeholder: "Product name" %>
         <%= f.input :frequency, label: "Remind me",
                                 selected: "Never",
                                 collection: @frequency_options.map { |key, val| [key, val] },

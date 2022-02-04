@@ -18,6 +18,17 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all.reverse
+    @product_lists = ProductList.all
+    @lists_of_products = []
+    @lists.each do |list|
+      list.id
+      products_by_list = []
+      @product_lists.each do |product_list|
+        products_by_list << Product.find(product_list.product_id) if product_list.list_id == list.id
+      end
+      @lists_of_products << products_by_list
+    end
+    @lists_of_products = @lists_of_products.reverse
   end
 
   def show

@@ -11,8 +11,15 @@
     <% @lists.each do |list| %>
       <%= link_to list_path(list) do %>
         <div class="list-history-container">
-          <h6 class="list-date"><%= list.date.strftime("%d/%m/%Y") %></h6>
-          <p class="list-user"><%= list.user.name %></p>
+          <div class="list-date-user">
+            <h6 class="list-date"><%= list.date.strftime("%d %h %Y") %></h6>
+            <p class="list-user"><%= list.user.name %></p>
+          </div>
+          <% @lists_of_products[list.id - 1][0..3].each do |product| %>
+            <% if product.photo.attached? %>
+              <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
+            <% end %>
+          <% end %>
         </div>
       <% end %>
     <% end %>

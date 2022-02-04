@@ -34,7 +34,9 @@
 <div class="container">
   <div class="app-bar-bottom">
     <span class="material-icons lime-text text-darken-3" id="shopping-cart" data-toggle="modal" data-target=".bd-example-modal-lg">shopping_cart</span>
-    <div class="number-products-bought"><span id="number-products-bought-text"><%= @products_bought.count %></span></div>
+    <% unless @products_bought.count == 0 %>
+      <div class="number-products-bought"><span id="number-products-bought-text"><%= @products_bought.count %></span></div>
+    <% end %>
     <div class="fixed-action-btn" id="floating-btn">
       <%= link_to new_product_path, class: "mdc-fab btn-floating btn-large lime darken-3" do %>
         <i class="large material-icons">add</i>
