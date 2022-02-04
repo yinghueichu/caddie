@@ -10,8 +10,9 @@
   <h2>Previous shopping</h2>
     <% @lists.each do |list| %>
       <%= link_to list_path(list) do %>
-        <div class="list-item-container">
-          <h6><%= list.date %></h6>
+        <div class="list-history-container">
+          <h6 class="list-date"><%= list.date.strftime("%d/%m/%Y") %></h6>
+          <p class="list-user"><%= list.user.name %></p>
         </div>
       <% end %>
     <% end %>

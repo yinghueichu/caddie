@@ -1,6 +1,6 @@
 .list-item-container {
   background-color: white;
-  height: 120px;
+  height: 100px;
   border-radius: 8px;
   margin-bottom: 12px;
   padding: 12px;
@@ -50,4 +50,24 @@
   margin-right: 12px;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.list-date {
+  color: black;
+}
+
+#product-by-list-container {
+  margin-bottom: 60px;
+}
+
+.list-user {
+  color: black;
+}
+
+.list-history-container {
+  background-color: white;
+  height: 80px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 12px;
 }

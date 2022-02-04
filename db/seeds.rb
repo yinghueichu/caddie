@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-ProductTag.delete_all
+# ProductTag.delete_all
 Product.delete_all
 User.delete_all
 
@@ -39,11 +39,41 @@ Product.create!([
     frequency: 7,
     user_id: ( User.first.id + 1)
   },
-  { name: "Rice cake",
+  { name: "Rice cake Multigrains",
+    frequency: 14,
+    user_id: ( User.first.id + 2)
+  },
+  { name: "Cashew butter",
     frequency: 14,
     user_id: ( User.first.id + 2)
   }
 ])
+
+require "open-uri"
+
+file_peanut_butter = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1643975814/development/peanut_butter_gybb0k.jpg")
+peanut_butter = Product.find_by_name("Peanut butter")
+peanut_butter.photo.attach(io: file_peanut_butter, filename: "peanut_butter_gybb0k.jpg")
+
+file_pate = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1643975607/development/pate_ktf9io.jpg")
+pate_a_tartiner = Product.find_by_name("Pâte à tartiner")
+pate_a_tartiner.photo.attach(io: file_pate, filename: "pate_ktf9io.jpg")
+
+file_banana = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1643975422/development/banana_gsgdc5.jpg")
+banana = Product.find_by_name("Banana")
+banana.photo.attach(io: file_banana, filename: "banana_gsgdc5.jpg")
+
+file_soy_milk = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1643975281/development/soy_milk_rhl5s2.jpg")
+soy_milk = Product.find_by_name("Soy milk")
+soy_milk.photo.attach(io: file_soy_milk, filename: "soy_milk_rhl5s2.jpg")
+
+file_rice_cake = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1643975115/development/lima_land_-_rice_cake_meergranen_100g_packshot_rgb_0_kfwjqr.jpg")
+rice_cake = Product.find_by_name("Rice cake Multigrains")
+rice_cake.photo.attach(io: file_rice_cake, filename: "lima_land_-_rice_cake_meergranen_100g_packshot_rgb_0_kfwjqr.jpg")
+
+file_cashew = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1643469221/development/vd75pnia4pkxpjndfu46qghko8ry.jpg")
+cashew_butter = Product.find_by_name("Cashew butter")
+cashew_butter.photo.attach(io: file_cashew, filename: "vd75pnia4pkxpjndfu46qghko8ry.jpg")
 
 puts "#{Product.count} products created!"
 
@@ -100,3 +130,18 @@ ProductTag.create!([
 ])
 
 puts "#{ProductTag.count} products tagged!"
+
+puts "Creating previous shopping lists.."
+
+List.create!([
+   { date: (Date.today - 30),
+     user_id: User.first.id },
+   { date: (Date.today - 20),
+     user_id: User.last.id },
+   { date: (Date.today - 14),
+     user_id: User.last.id },
+   { date: (Date.today - 10),
+     user_id: User.first.id },
+   { date: (Date.today - 5),
+     user_id: User.first.id }
+])

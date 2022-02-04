@@ -17,7 +17,7 @@ class ListsController < ApplicationController
   end
 
   def index
-    @lists = List.all
+    @lists = List.all.reverse
   end
 
   def show
