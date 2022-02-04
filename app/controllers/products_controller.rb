@@ -17,7 +17,13 @@ class ProductsController < ApplicationController
     @unit_options = [
       "unit", "bottle", "box", "piece", "pack",
       "gram", "kilo", "bag", "roll", "personalise..."]
+  end
 
+  def buy
+    @product = Product.find(params[:id])
+    @product.buy
+    @product.save!
+    redirect_to products_path(anchor: "product-#{@product.id + 1}")
   end
 
   def new

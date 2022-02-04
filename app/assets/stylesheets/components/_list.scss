@@ -1,23 +1,22 @@
 .list-item-container {
   background-color: white;
-  height: 120px;
+  height: 100px;
   border-radius: 8px;
   margin-bottom: 12px;
   padding: 12px;
-
+  display: flex;
+  justify-content: start;
 }
 
 .product {
   display: flex;
   justify-content: flex-start;
-
 }
 
 #product-name {
   font-weight: bold;
   margin-bottom: 8px;
   margin-top: 8px;
-
 }
 
 #checkbox {
@@ -30,4 +29,56 @@
 
 .product-info {
   margin-left: 16px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.list {
+  margin-bottom: 68px;
+}
+
+.list-photo {
+  height: 60px;
+  width: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.checkbox-link {
+  margin-right: 12px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.list-date {
+  color: black;
+}
+
+#product-by-list-container {
+  margin-bottom: 60px;
+}
+
+.list-user {
+  background: #9e9d24;
+  padding: 4px 16px;
+  border-radius: 8px;
+  color: white;
+  width: fit-content;
+
+}
+
+.list-history-container {
+  background-color: white;
+  height: 150px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 12px;
+}
+
+.list-date-user {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }

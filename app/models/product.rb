@@ -10,17 +10,21 @@ class Product < ApplicationRecord
 
   aasm do
     state :to_buy, initial: true
-    state :bought
+    state :bought, :archive
 
     event :buy do
       transitions from: :to_buy, to: :bought
     end
 
     event :re_buy do
-      transitions from: :bought, to: :to_buy
+      transitions from: :archive, to: :to_buy
     end
 
     event :archive do
+      transitions from: :bought, to: :archive
+    end
+
+    event :delete_from_to_buy do
       transitions from: :to_buy, to: :archive
     end
   end
