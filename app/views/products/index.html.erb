@@ -1,8 +1,20 @@
 <div class="container">
-  <div class="app-bar-top">
-  <%= link_to lists_path do %>
-    <span class="material-icons black-text">menu</span>
-  <% end %>
+  <div class="app-bar-top nav">
+    <button class="btn-app-bar-top" id="btnNav" type="button">
+      <span class="material-icons black-text">menu</span>
+    </button>
+    <div class="nav__links">
+    <div class="nav__link" id="nav__link_back">
+      <span class="material-icons grey-text text-darken-4">chevron_left</span>
+    </div>
+    <%= link_to lists_path, class: "nav__link" do %>
+      <span class="material-icons black-text">history</span><span class="nav-link-text">Previous shopping</span>
+    <% end %>
+    <%= link_to destroy_user_session_path, class: "nav__link" do %>
+      <span class="material-icons black-text">logout</span><span class="nav-link-text">Log out</span>
+    <% end %>
+  </div>
+    <div class="nav__overlay"></div>
   </div>
 </div>
 

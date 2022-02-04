@@ -38,7 +38,6 @@ var fab = document.querySelector('.mdc-fab');
 
 if (fab) {
   const fabRipple = new MDCRipple(document.querySelector('.mdc-fab'));
-  console.log(fabRipple);
   document.addEventListener('turbolinks:load', function () {
     var elems = document.querySelectorAll('.fixed-action-btn');
     var instances = M.FloatingActionButton.init(elems, 'top');
@@ -53,11 +52,30 @@ window.$ = $;
 
 document.addEventListener('turbolinks:load', function () {
   console.log("turbolinks ready!");
+
+  const nav = document.querySelector('.nav');
+  const navBtn = document.querySelector('#btnNav');
+  const overlay = document.querySelector('.nav__overlay');
+  const navBack = document.querySelector('#nav__link_back');
+
+  console.log(navBtn);
+
+  navBtn.addEventListener("click", function () {
+    nav.classList.add("nav--open");
+  })
+
+  overlay.addEventListener("click", function () {
+    nav.classList.remove("nav--open");
+  })
+
+  navBack.addEventListener("click", function () {
+    nav.classList.remove("nav--open");
+  })
+
   const realFileBtn = document.querySelector('#product_photo');
   const previewContainer = document.querySelector('#imagePreview');
   const previewImage = previewContainer.querySelector('.image-preview__image');
   const previewDefaultText = previewContainer.querySelector('.image-preview__text');
-
 
   previewContainer.addEventListener('click', function () {
     realFileBtn.click();
@@ -79,6 +97,9 @@ document.addEventListener('turbolinks:load', function () {
       previewImage.style.display = 'none';
     }
   });
+
+
+
 });
 
 

@@ -41,11 +41,19 @@ Product.create!([
   },
   { name: "Rice cake Multigrains",
     frequency: 14,
-    user_id: ( User.first.id + 2)
+    user_id: User.first.id
   },
   { name: "Cashew butter",
     frequency: 14,
     user_id: ( User.first.id + 2)
+  },
+  { name: "Strawberry",
+    frequency: 30,
+    user_id: ( User.first.id + 2)
+  },
+  { name: "Kale",
+    frequency: 30,
+    user_id: User.first.id
   }
 ])
 
@@ -75,6 +83,14 @@ file_cashew = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v164
 cashew_butter = Product.find_by_name("Cashew butter")
 cashew_butter.photo.attach(io: file_cashew, filename: "vd75pnia4pkxpjndfu46qghko8ry.jpg")
 
+file_strawberry = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1643973145/development/d1r2a9l2za7krbk37wca313yic92.jpg")
+strawberry = Product.find_by_name("Strawberry")
+strawberry.photo.attach(io: file_strawberry, filename: "d1r2a9l2za7krbk37wca313yic92.jpg")
+
+file_kale = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1643988026/development/kale_y7hv9e.jpg")
+kale = Product.find_by_name("Kale")
+kale.photo.attach(io: file_kale, filename: "kale_y7hv9e.jpg")
+
 puts "#{Product.count} products created!"
 
 puts "Creating tags.."
@@ -87,6 +103,9 @@ Tag.create!([
     group_name: "merchant"
   },
   { name: "Zingam",
+    group_name: "merchant"
+  },
+  { name: "Kazidomi",
     group_name: "merchant"
   },
   { name: "Keto",
@@ -134,8 +153,6 @@ puts "#{ProductTag.count} products tagged!"
 puts "Creating previous shopping lists.."
 
 List.create!([
-   { date: (Date.today - 30),
-     user_id: User.first.id },
    { date: (Date.today - 20),
      user_id: User.last.id },
    { date: (Date.today - 14),
@@ -144,4 +161,30 @@ List.create!([
      user_id: User.first.id },
    { date: (Date.today - 5),
      user_id: User.first.id }
+])
+
+ProductList.create!([
+    { product_id: Product.first.id,
+      list_id: List.first.id },
+    { product_id: ( Product.first.id + 1 ),
+      list_id: List.first.id
+    },
+    { product_id: ( Product.first.id + 4 ),
+      list_id: ( List.first.id + 1 )
+    },
+    { product_id: ( Product.first.id + 2 ),
+      list_id: ( List.first.id + 1 )
+    },
+    { product_id: ( Product.first.id + 3 ),
+      list_id: ( List.first.id + 1 )
+    },
+    { product_id: ( Product.first.id + 1 ),
+      list_id: ( List.first.id + 2 )
+    },
+    { product_id: ( Product.first.id + 6 ),
+      list_id: ( List.first.id + 2 )
+    },
+    { product_id: ( Product.first.id + 7 ),
+      list_id: ( List.first.id + 3 )
+    }
 ])
