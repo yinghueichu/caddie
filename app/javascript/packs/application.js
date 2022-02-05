@@ -138,3 +138,5 @@ document.addEventListener('turbolinks:load', function () {
 //     }
 //   });
 // });
+
+import "controllers"
