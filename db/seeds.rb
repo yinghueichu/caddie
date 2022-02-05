@@ -51,6 +51,12 @@ Product.create!([
   },
   { name: "Aubergines",
     user_id: User.first.id
+  },
+  { name: "Pomme",
+    user_id: User.first.id
+  },
+  { name: "Fraises",
+    user_id: User.first.id
   }
 ])
 
@@ -116,6 +122,12 @@ ProductTag.create!([
   },
   { product_id: ( Product.first.id + 7),
     tag_id: 7
+  },
+  { product_id: ( Product.first.id + 8),
+    tag_id: 5
+  },
+  { product_id: ( Product.first.id + 9),
+    tag_id: 5
   }
 ])
 
