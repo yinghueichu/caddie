@@ -32,12 +32,109 @@ document.addEventListener('turbolinks:load', () => {
 import 'materialize-css/dist/js/materialize';
 
 //Floating action button
-
 import { MDCRipple } from '@material/ripple';
 
-const fabRipple = new MDCRipple(document.querySelector('.mdc-fab'));
+var fab = document.querySelector('.mdc-fab');
 
-document.addEventListener('DOMContentLoaded', function () {
-  var elems = document.querySelectorAll('.fixed-action-btn');
-  var instances = M.FloatingActionButton.init(elems, 'top');
+if (fab) {
+  const fabRipple = new MDCRipple(document.querySelector('.mdc-fab'));
+  document.addEventListener('turbolinks:load', function () {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, 'top');
+  });
+}
+
+
+//file picker
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
+
+document.addEventListener('turbolinks:load', function () {
+  console.log("turbolinks ready!");
+
+
+
+  const nav = document.querySelector('.nav');
+  const navBtn = document.querySelector('#btnNav');
+  const overlay = document.querySelector('.nav__overlay');
+  const navBack = document.querySelector('#nav__link_back');
+
+  if (nav) {
+    navBtn.addEventListener("click", function () {
+      nav.classList.add("nav--open");
+    })
+
+    overlay.addEventListener("click", function () {
+      nav.classList.remove("nav--open");
+    })
+
+    navBack.addEventListener("click", function () {
+      nav.classList.remove("nav--open");
+    })
+  }
+
+
+  const realFileBtn = document.querySelector('#product_photo');
+  const previewContainer = document.querySelector('#imagePreview');
+  const previewImage = previewContainer.querySelector('.image-preview__image');
+  const previewDefaultText = previewContainer.querySelector('.image-preview__text');
+
+  if (realFileBtn) {
+    previewContainer.addEventListener('click', function () {
+      realFileBtn.click();
+    })
+
+    realFileBtn.addEventListener("change", function () {
+      const file = realFileBtn.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        previewDefaultText.style.display = 'none';
+        previewImage.style.display = 'block';
+        reader.addEventListener('load', function () {
+          previewImage.setAttribute('src', this.result);
+        });
+        reader.readAsDataURL(file);
+
+      } else {
+        previewImage.style.display = 'none';
+      }
+    });
+  }
+
+
+
+
 });
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   console.log("DOMContentLoaded");
+//   const realFileBtn = document.querySelector('#product_photo');
+//   const previewContainer = document.querySelector('#imagePreview');
+//   const previewImage = previewContainer.querySelector('.image-preview__image');
+//   const previewDefaultText = previewContainer.querySelector('.image-preview__text');
+
+
+//   previewContainer.addEventListener('click', function () {
+//     realFileBtn.click();
+//   })
+
+//   realFileBtn.addEventListener("change", function () {
+//     const file = realFileBtn.files[0];
+
+//     if (file) {
+//       const reader = new FileReader();
+//       previewDefaultText.style.display = 'none';
+//       previewImage.style.display = 'block';
+//       reader.addEventListener('load', function() {
+//         previewImage.setAttribute('src', this.result);
+//       });
+//       reader.readAsDataURL(file);
+
+//     } else {
+//       previewImage.style.display = 'none';
+//     }
+//   });
+// });

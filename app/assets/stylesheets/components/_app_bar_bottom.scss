@@ -18,5 +18,25 @@
   bottom: 40px;
   vertical-align: top;
   margin-right: 28px;
+}
 
+#shopping-cart {
+  position: relative;
+}
+
+.number-products-bought {
+  border-radius: 50%;
+  background-color: #827717;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 52px;
+  bottom: 32px;
+}
+
+#number-products-bought-text {
+  color: white;
+  padding-top: 1px;
 }

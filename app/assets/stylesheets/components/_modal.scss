@@ -1,0 +1,26 @@
+.modal {
+  width: 99vw;
+  height: 90vh;
+  border-radius: 16px 16px 0px 0px;
+  top: 16px;
+  max-height: 100vh;
+  background-color: $light-gray;
+}
+
+.modal-content {
+  background-color: $light-gray;
+  border: none;
+}
+
+#icon-check {
+  margin-top: 4px;
+  margin-right: 8px;
+}
+
+.list-item-bought-container {
+  height: 40px;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  justify-content: start;
+}
