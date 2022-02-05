@@ -1,47 +1,95 @@
-
-
 <div class="container">
-  <h2>Products to buy</h2>
-  <div class="list">
-    <% @products_to_buy.each do |product| %>
-    <div class="list-item-container">
-    <div class="product">
-      <span class="material-icons" id="checkbox">check_box_outline_blank</span>
-      <div class="product-info">
-        <p id="product-name"><%= product.name %></p>
-        <p id="product-brand">My favorite brand</p>
-      </div>
+  <div class="app-bar-top nav">
+    <button class="btn-app-bar-top" id="btnNav" type="button">
+      <span class="material-icons black-text">menu</span>
+    </button>
+    <div class="nav__links">
+    <div class="nav__link" id="nav__link_back">
+      <span class="material-icons grey-text text-darken-4">chevron_left</span>
     </div>
-    <div class="product-photo"></div>
-    </div>
+    <%= link_to lists_path, class: "nav__link" do %>
+      <span class="material-icons black-text">history</span><span class="nav-link-text">Previous shopping</span>
     <% end %>
+    <%= link_to destroy_user_session_path, class: "nav__link" do %>
+      <span class="material-icons black-text">logout</span><span class="nav-link-text">Log out</span>
+    <% end %>
+  </div>
+    <div class="nav__overlay"></div>
   </div>
 </div>
 
 <div class="container">
-  <h2>products bought</h2>
-  <div class="list">
-    <% @products_bought.each do |product| %>
-    <div class="list-item-container">
-
-      <p style="text-decoration: line-through" id="product-name"><%= product.name %></p>
-    </div>
-    <% end %>
-  </div>
-</div>
-
-
-
-<div class="container">
-  <div class="app-bar-bottom">
-    <span class="material-icons lime-text text-darken-3" id="shopping-cart">shopping_cart</span>
-      <div class="fixed-action-btn btn-floating btn-large lime darken-3" id="floating-btn">
-        <%= link_to tags_path do %>
-          <i class="large material-icons btn-floating btn-large lime darken-3" data-toggle="modal" data-target="#exampleModalLong">add</i>
+    <h2>Products to buy</h2>
+    <div class="list">
+      <% @products_to_buy.each do |product| %>
+      <div class="list-item-container" id="product-<%= product.id %>">
+      <div class="product">
+        <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
+        <span class="material-icons" id="checkbox">check_box_outline_blank</span>
         <% end %>
+        <div class="product-photo"></div>
+          <% if product.photo.attached? %>
+            <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
+          <% else %>
+          <% end %>
+        </div>
+        <div class="product-info">
+          <p id="product-name"><%= product.name %></p>
+          <p id="product-brand">My favorite brand</p>
+        </div>
       </div>
-    <span class="material-icons lime-text text-darken-3" id="chat">chat</span>
+      <% end %>
+    </div>
   </div>
+  <div class="container">
+    <h2>products bought</h2>
+    <div class="list">
+      <% @products_bought.each do |product| %>
+      <div class="list-item-container">
+        <p style="text-decoration: line-through" id="product-name"><%= product.name %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="app-bar-bottom">
+      <span class="material-icons lime-text text-darken-3" id="shopping-cart" data-toggle="modal" data-target=".bd-example-modal-lg">shopping_cart</span>
+      <% unless @products_bought.count == 0 %>
+        <div class="number-products-bought"><span id="number-products-bought-text"><%= @products_bought.count %></span></div>
+      <% end %>
+      <div class="fixed-action-btn" id="floating-btn">
+        <%= link_to tags_path, class: "mdc-fab btn-floating btn-large lime darken-3" do %>
+          <i class="large material-icons">add</i>
+        <%end %>
+      </div>
+      <span class="material-icons lime-text text-darken-3" id="chat">chat</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <span class="material-icons mt-3 ml-3" data-dismiss="modal">close</span>
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <h2>Products bought</h2>
+        <div class="list">
+          <% if @products_bought.first.nil? %>
+            <P>Let the shopping begin!</P>
+          <% else %>
+            <% @products_bought.each do |product| %>
+              <div class="list-item-bought-container">
+              <span class="material-icons" id="icon-check">done</span>
+                <p style="text-decoration: line-through" id="product-name"><%= product.name %></p>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+        <div class="btn-container">
+          <%= link_to "Finish my shopping", lists_path, method: "post", class: "btn lime darken-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
-
-
