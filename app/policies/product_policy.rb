@@ -7,7 +7,15 @@ class ProductPolicy < ApplicationPolicy
     end
   end
 
-  def new?
+  def create?
+    true
+  end
+
+  def update?
+    true
+  end
+
+  def destroy?
     true
   end
 end

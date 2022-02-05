@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
     @products = policy_scope(Product)
     @products_to_buy = @products.select{|product| product.aasm_state == "to_buy"}
     @products_bought = @products.select{|product| product.aasm_state == "bought"}
-    authorize @product
   end
 
   def edit
