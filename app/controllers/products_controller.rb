@@ -1,12 +1,15 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
-    @products_to_buy = Product.all.where(aasm_state: "to_buy").reverse
-    @products_bought = Product.all.where(aasm_state: "bought").reverse
+
+    # Modification par le TA pour améliorer la lisibilité et permettre Pundit + Follow
+    @products = policy_scope(Product)
+    @products_to_buy = @products.select{|product| product.aasm_state == "to_buy"}
+    @products_bought = @products.select{|product| product.aasm_state == "bought"}
   end
 
   def edit
     @product = Product.find(params[:id])
+    authorize @product
     @frequency_options = {
       "Never" => nil,
       "Every week" => 7,
@@ -28,6 +31,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    authorize @product
     @frequency_options = {
       "Never" => nil,
       "Every week" => 7,
@@ -51,6 +55,7 @@ class ProductsController < ApplicationController
     }
     @product = Product.new(product_params)
     @product.user = current_user
+    authorize @product
 
     if @product.save
       redirect_to products_path
