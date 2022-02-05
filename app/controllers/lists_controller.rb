@@ -17,6 +17,7 @@ class ListsController < ApplicationController
   end
 
   def index
+    @lists = policy_scope(List).order(created_at: :desc)
     @lists = List.all.reverse
     @product_lists = ProductList.all
     @lists_of_products = []
@@ -40,4 +41,6 @@ class ListsController < ApplicationController
     end
     @products_by_list
   end
+
+
 end
