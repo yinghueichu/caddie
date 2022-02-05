@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
 
   def create
+    raise
     @list = List.new(date: Date.today)
     @list.user = current_user
     @list.save!

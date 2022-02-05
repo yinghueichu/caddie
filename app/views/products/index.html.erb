@@ -10,7 +10,7 @@
     <%= link_to lists_path, class: "nav__link" do %>
       <span class="material-icons black-text">history</span><span class="nav-link-text">Previous shopping</span>
     <% end %>
-    <%= link_to destroy_user_session_path, class: "nav__link" do %>
+    <%= link_to destroy_user_session_path, method: :delete, class: "nav__link" do %>
       <span class="material-icons black-text">logout</span><span class="nav-link-text">Log out</span>
     <% end %>
   </div>

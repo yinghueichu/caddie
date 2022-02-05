@@ -7,7 +7,7 @@
       <div class="product-name">
         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
         </div>
-        <p><%= link_to product.name, product_lists_path, method: :post %></p>
+        <p><%= link_to product.name, product_lists_path(product_id: product.id), method: :post, remote: :true %></p>
       </div>
     <% end %>
 
