@@ -1,0 +1,60 @@
+/* List of categories */
+
+.card-product {
+  overflow: hidden;
+  height: 50px;
+  background: white;
+  display: flex;
+  align-items: center;
+}
+
+.card-product img {
+  height: 40px;
+  width: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-left: 24px;
+}
+
+.card-product a {
+  font-size: 16px;
+  color:black;
+  margin-left: 16px;
+  text-decoration: none;
+}
+
+
+.card-product .card-product-infos {
+  padding: 8px;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 75%;
+}
+
+/* Product cards within product categories */
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.card-category {
+  height: 85px;
+  border-radius: 8px;
+}
+
+.product-name {
+  align-items: center;
+}
+
+.product-name {
+  p {
+    text-align: center;
+    margin-bottom: 0px;
+  }
+}

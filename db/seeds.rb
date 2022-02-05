@@ -47,12 +47,19 @@ Product.create!([
     frequency: 14,
     user_id: ( User.first.id + 2)
   },
-  { name: "Strawberry",
-    frequency: 30,
-    user_id: ( User.first.id + 2)
+  { name: "Abricot",
+    user_id: User.first.id
   },
-  { name: "Kale",
-    frequency: 30,
+  { name: "Asperges",
+    user_id: User.first.id
+  },
+  { name: "Aubergines",
+    user_id: User.first.id
+  },
+  { name: "Pomme",
+    user_id: User.first.id
+  },
+  { name: "Fraises",
     user_id: User.first.id
   }
 ])
@@ -112,17 +119,18 @@ Tag.create!([
     group_name: "regime"
   },
   { name: "Fruit",
-    group_name: "section"
+    group_name: "category"
   },
   { name: "Snack",
-    group_name: "section"
+    group_name: "category"
   },
   { name: "Veggies",
-    group_name: "section"
+    group_name: "category"
   },
   { name: "Protein",
-    group_name: "section"
+    group_name: "category"
   }
+
 ])
 
 puts "#{Tag.count} tags created!"
@@ -131,9 +139,7 @@ puts "#{Tag.count} tags created!"
 puts "Tagging product.."
 
 ProductTag.create!([
-  { product_id: Product.first.id,
-    tag_id: 1
-  },
+
   { product_id: ( Product.first.id + 1),
     tag_id: 1
   },
@@ -145,6 +151,24 @@ ProductTag.create!([
   },
   { product_id: ( Product.first.id + 4),
     tag_id: 3
+  },
+  { product_id: ( Product.first.id + 2),
+    tag_id: 5
+  },
+  { product_id: ( Product.first.id + 5),
+    tag_id: 5
+  },
+  { product_id: ( Product.first.id + 6),
+    tag_id: 7
+  },
+  { product_id: ( Product.first.id + 7),
+    tag_id: 7
+  },
+  { product_id: ( Product.first.id + 8),
+    tag_id: 5
+  },
+  { product_id: ( Product.first.id + 9),
+    tag_id: 5
   }
 ])
 
