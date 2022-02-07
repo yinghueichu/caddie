@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
 
     # Modification par le TA pour améliorer la lisibilité et permettre Pundit + Follow
     @products = policy_scope(Product)
-    @products_to_buy = current_user.lists.where(status: "progress").first.products
+    # @products_to_buy = current_user.lists.where(status: "progress").first.products
+    @products_to_buy = @products.select{|product| product.aasm_state == "to_buy"}
     @products_bought = @products.select{|product| product.aasm_state == "bought"}
   end
 
@@ -68,7 +69,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :photo,:frequency, :quantity, :unity, :description,:rating, :comment, :state, :price)
+    params.require(:product).permit(:name, :photo, :frequency, :quantity, :unity, :description,:rating, :comment, :state, :price)
   end
 
 end
