@@ -19,6 +19,31 @@
 
   <body>
     <%= render 'shared/flashes' %>
+    <div class="container">
+      <div class="app-bar-top nav">
+        <button class="btn-app-bar-top" id="btnNav" type="button">
+          <span class="material-icons black-text">menu</span>
+        </button>
+        <div class="nav__links">
+        <div class="nav__link" id="nav__link_back">
+          <span class="material-icons grey-text text-darken-4">chevron_left</span>
+        </div>
+        <%= link_to root_path, class: "nav__link" do %>
+          <span class="material-icons black-text">home</span><span class="nav-link-text">Home</span>
+        <% end %>
+        <%= link_to lists_path, class: "nav__link" do %>
+          <span class="material-icons black-text">history</span><span class="nav-link-text">Previous shopping</span>
+        <% end %>
+        <%= link_to destroy_user_session_path, method: :delete, class: "nav__link" do %>
+          <span class="material-icons black-text">logout</span><span class="nav-link-text">Log out</span>
+        <% end %>
+        <%= link_to "/users", class: "nav__link" do %>
+          <span class="material-icons black-text">perm_identity</span><span class="nav-link-text">Users</span>
+        <% end %>
+      </div>
+        <div class="nav__overlay"></div>
+      </div>
+</div>
 
     <%= yield %>
 
