@@ -1,4 +1,15 @@
-<h3>Search to be added</h3>
+<div>
+  <%= form_tag tags_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Banane, carrots..."
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+
 
 <% @tags_category.each do |tag|  %>
   <div class="card-product">

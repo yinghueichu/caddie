@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   def index
-
     # Modification par le TA pour améliorer la lisibilité et permettre Pundit + Follow
     @products = policy_scope(Product)
     # @products_to_buy = current_user.lists.where(status: "progress").first.products
@@ -43,7 +42,6 @@ class ProductsController < ApplicationController
     @unit_options = [
       "unit", "bottle", "box", "piece", "pack",
       "gram", "kilo", "bag", "roll", "personalise..."]
-
   end
 
   def create
