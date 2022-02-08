@@ -92,11 +92,13 @@ cashew_butter.photo.attach(io: file_cashew, filename: "vd75pnia4pkxpjndfu46qghko
 
 file_strawberry = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1643973145/development/d1r2a9l2za7krbk37wca313yic92.jpg")
 strawberry = Product.find_by_name("Strawberry")
-strawberry.photo.attach(io: file_strawberry, filename: "d1r2a9l2za7krbk37wca313yic92.jpg")
+# strawberry.photo.attach(io: file_strawberry, filename: "d1r2a9l2za7krbk37wca313yic92.jpg")
+# Nicolas : cette photo faisait planter le rails db:seed, je l'ai commentée (erreur : undefined method "photo")
 
 file_kale = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1643988026/development/kale_y7hv9e.jpg")
 kale = Product.find_by_name("Kale")
-kale.photo.attach(io: file_kale, filename: "kale_y7hv9e.jpg")
+# kale.photo.attach(io: file_kale, filename: "kale_y7hv9e.jpg")
+# Nicolas : cette photo faisait planter le rails db:seed, je l'ai commentée (erreur : undefined method "photo")
 
 puts "#{Product.count} products created!"
 
