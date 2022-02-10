@@ -6,10 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# ProductTag.delete_all
+ProductTag.delete_all
+ProductList.delete_all
+List.delete_all
 Product.delete_all
 User.delete_all
-
+Tag.delete_all
 
 puts 'Creating users...'
 User.create!([
@@ -142,35 +144,35 @@ puts "Tagging product.."
 
 ProductTag.create!([
 
-  { product_id: ( Product.first.id + 1),
-    tag_id: 1
+  { product_id: (Product.first.id + 1),
+    tag_id: Tag.first.id
   },
   { product_id: ( Product.first.id + 2),
-    tag_id: 2
+    tag_id: (Tag.first.id + 1)
   },
   { product_id: ( Product.first.id + 3),
-    tag_id: 2
+    tag_id: (Tag.first.id + 2)
   },
   { product_id: ( Product.first.id + 4),
-    tag_id: 3
+    tag_id: (Tag.first.id + 3)
   },
   { product_id: ( Product.first.id + 2),
-    tag_id: 5
+    tag_id: (Tag.first.id + 4)
   },
   { product_id: ( Product.first.id + 5),
-    tag_id: 5
+    tag_id: (Tag.first.id + 5)
   },
   { product_id: ( Product.first.id + 6),
-    tag_id: 7
+    tag_id: (Tag.first.id + 5)
   },
   { product_id: ( Product.first.id + 7),
-    tag_id: 7
+    tag_id: (Tag.first.id + 6)
   },
   { product_id: ( Product.first.id + 8),
-    tag_id: 5
+    tag_id: (Tag.first.id + 7)
   },
   { product_id: ( Product.first.id + 9),
-    tag_id: 5
+    tag_id: (Tag.first.id + 8)
   }
 ])
 

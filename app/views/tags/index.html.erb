@@ -3,22 +3,28 @@
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "Banane, carrots..."
+      placeholder: "Fruit..."
     %>
     <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
 </div>
 
-
-
-<% @tags_category.each do |tag|  %>
-  <div class="card-product">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <div class="card-content">
-      <div class="card-product-infos">
-          <%= link_to tag.name, tag_path(tag.id) %>
-      </div>
-      <i class="fas fa-chevron-right"></i>
+<% if @products && @products.size > 0 %>
+  <% @products.each do |product| %>
+    <div>
+      <%= product.name %>
     </div>
-  </div>
+  <% end %>
+<% elsif @tags_category && @tags_category.size > 0 %>
+  <% @tags_category.each do |tag|  %>
+    <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-content">
+        <div class="card-product-infos">
+            <%= link_to tag.name, tag_path(tag.id) %>
+        </div>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+  <% end %>
 <% end %>
