@@ -4,9 +4,7 @@ class TagsController < ApplicationController
     @tags_category = Tag.all.where(group_name: "category")
 
     if params[:query].present?
-      @tags = Tag.where(name: params[:query])
-    else
-      @tags = Tag.all
+      @products = Product.where(name: params[:query])
     end
   end
 
