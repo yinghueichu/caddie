@@ -1,9 +1,11 @@
+<%= render "shared/navback" %>
+
 <div>
   <%= form_tag tags_path, method: :get do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "Fruit..."
+      placeholder: "Banana, beer..."
     %>
     <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>

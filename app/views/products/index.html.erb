@@ -1,30 +1,31 @@
 <%= current_user.email %>
 
+<%= render "shared/app_bar_top" %>
+
 <div class="container">
-    <h2>Products to buy</h2>
+    <h2>To buy</h2>
     <div class="list">
       <% @products_to_buy.each do |product| %>
-      <div class="list-item-container" id="product-<%= product.id %>">
-      <div class="product">
-        <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-        <span class="material-icons" id="checkbox">check_box_outline_blank</span>
-        <% end %>
-        <div class="product-photo"></div>
-          <% if product.photo.attached? %>
-            <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
-          <% else %>
+        <div class="list-item-container" id="product-<%= product.id %>">
+        <div class="product">
+          <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
+            <span class="material-icons" id="checkbox">check_box_outline_blank</span>
           <% end %>
+          <div class="product-photo"></div>
+            <% if product.photo.attached? %>
+              <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
+            <% end %>
+          </div>
+          <div class="product-info">
+            <p id="product-name"><%= product.name %></p>
+            <p id="product-brand">My favorite brand</p>
+          </div>
         </div>
-        <div class="product-info">
-          <p id="product-name"><%= product.name %></p>
-          <p id="product-brand">My favorite brand</p>
-        </div>
-      </div>
       <% end %>
     </div>
   </div>
   <div class="container">
-    <h2>products bought</h2>
+    <h2>Bought</h2>
     <div class="list">
       <% @products_bought.each do |product| %>
       <div class="list-item-container">

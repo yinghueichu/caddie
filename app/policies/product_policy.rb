@@ -11,6 +11,10 @@ class ProductPolicy < ApplicationPolicy
     true
   end
 
+  def buy?
+    true
+  end
+
   def update?
     true
   end

@@ -5,11 +5,14 @@
 
     <% @tag.products.each do |product|  %>
       <div data-controller="select">
-        <%= link_to product_lists_path(product_id: product.id), method: :post, remote: :true do%>
-          <div class="product_name" data-select-target="products" data-action= "click->select#add_product">
+        <%= link_to product_path(product), method: :patch, remote: :true do%>
+          <div class="product_name" data-select-target="products" data-action= "click->select#to_buy_product">
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
             </div>
-            <%= product.name %>
+             <div class="product-photo"></div>
+             <div id=<%= product.id %>><%= product.name %></div>
+
+
           </div>
         <% end %>
       </div>
