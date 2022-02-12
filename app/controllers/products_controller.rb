@@ -54,6 +54,10 @@ class ProductsController < ApplicationController
       "gram", "kilo", "bag", "roll", "personalise..."]
   end
 
+  def product_to_create
+    Product.create(name: "To fill", user_id: current_user.id, aasm_state: "to_buy")
+  end
+
   def create
     @frequency_options = {
       "Never" => nil,

@@ -17,4 +17,15 @@ export default class extends Controller {
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() }
     })
   }
+
+
+  unexisting_product(event) {
+    event.preventDefault();
+    const url = `/product_to_create`;
+    console.log(url);
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() }
+    })
+  }
 }
