@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
     # @products_to_buy = current_user.lists.where(status: "progress").first.products
     @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }.reverse
     @products_bought = @products.select { |product| product.aasm_state == "bought" }.reverse
+    @products_all = @products.select { |product| product.aasm_state == "bought" || product.aasm_state == "to_buy" }.reverse
   end
 
   def edit
