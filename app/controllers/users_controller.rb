@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = policy_scope(User).where.not(id: current_user.id)
+    @products_to_buy = policy_scope(Product).select { |product| product.aasm_state == "to_buy" }
   end
 
   def follow

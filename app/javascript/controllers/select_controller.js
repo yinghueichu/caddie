@@ -7,11 +7,8 @@ export default class extends Controller {
   to_buy_product(event){
     // console.log(this.productsTarget.firstElementChild.style.border = "4px solid green");
     event.preventDefault();
-    console.log(this.element);
-    console.log(this.element.children[0].children[0].children[2].getAttribute("id"));
-    const productId = this.element.children[0].children[0].children[2].getAttribute("id")
+    const productId = event.currentTarget.dataset.productId;
     const url = `/products/${productId}`;
-    console.log(url);
     fetch(url, {
       method: 'PATCH',
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() }

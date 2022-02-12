@@ -1,5 +1,3 @@
-<%= render "shared/navback" %>
-
 <div>
   <%= form_tag tags_path, method: :get do %>
     <%= text_field_tag :query,
@@ -13,9 +11,7 @@
 
 <% if @products && @products.size > 0 %>
   <% @products.each do |product| %>
-    <div>
-      <%= product.name %>
-    </div>
+    <div><%= product.name %></div>
   <% end %>
 <% elsif @tags_category && @tags_category.size > 0 %>
   <% @tags_category.each do |tag|  %>
