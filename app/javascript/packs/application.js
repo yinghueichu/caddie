@@ -54,6 +54,26 @@ window.$ = $;
 document.addEventListener('turbolinks:load', function () {
   console.log("turbolinks ready!");
 
+  const btnAll = document.querySelector('#btnAll');
+  const btnToBuy = document.querySelector('#btnToBuy');
+  const navAll = document.querySelector('#navAll');
+  const navToBuy = document.querySelector('#navToBuy');
+
+
+  if (btnAll) {
+    btnAll.focus();
+    btnAll.addEventListener("click", function() {
+      navAll.style.display = "block";
+      navToBuy.style.display = "none";
+    })
+
+    btnToBuy.addEventListener("click", function () {
+      navAll.style.display = "none";
+      navToBuy.style.display = "block";
+    })
+  }
+
+
 
 
   const nav = document.querySelector('.nav');
