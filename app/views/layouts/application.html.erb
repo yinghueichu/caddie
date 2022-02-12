@@ -20,6 +20,8 @@
   <body>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= render "shared/app_bar_bottom" %>
+    <% unless controller_name == 'sessions' && action_name == 'new' %>
+      <%= render "shared/app_bar_bottom" %>
+    <% end %>
   </body>
 </html>
