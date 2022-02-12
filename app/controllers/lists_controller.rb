@@ -18,6 +18,7 @@ class ListsController < ApplicationController
   end
 
   def index
+    @products_to_buy = policy_scope(Product).select { |product| product.aasm_state == "to_buy" }
     @lists = policy_scope(List).order(created_at: :desc)
     @lists = List.all.reverse
     @product_lists = ProductList.all
@@ -34,7 +35,9 @@ class ListsController < ApplicationController
   end
 
   def show
+    @products_to_buy = policy_scope(Product).select { |product| product.aasm_state == "to_buy" }
     @list = List.find(params[:id])
+    authorize @list
     @product_lists = ProductList.all
     @products_by_list = []
     @product_lists.each do |product_list|

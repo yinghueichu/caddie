@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="app-bar-bottom">
+
+      <%= link_to products_path do %>
+        <span class="material-icons lime-text text-darken-3" id="receipt-long">receipt_long</span>
+        <% unless @products_to_buy.count == 0 %>
+          <div class="number-products-bought"><span id="number-products-bought-text"><%= @products_to_buy.count %></span></div>
+        <% end %>
+      <% end %>
+
+      <%= link_to tags_path do %>
+        <i class="material-icons lime-text text-darken-3">add_circle</i>
+      <% end %>
+
+      <%= link_to lists_path do %>
+        <i class="material-icons lime-text text-darken-3">history</i>
+      <% end %>
+
+      <%= link_to users_path do %>
+        <i class="material-icons lime-text text-darken-3">person</i>
+      <% end %>
+
+
+    </div>
+  </div>

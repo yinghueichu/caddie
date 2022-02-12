@@ -56,25 +56,37 @@ document.addEventListener('turbolinks:load', function () {
 
   const btnAll = document.querySelector('#btnAll');
   const btnToBuy = document.querySelector('#btnToBuy');
+  const btnBought = document.querySelector('#btnBought');
+
   const navAll = document.querySelector('#navAll');
   const navToBuy = document.querySelector('#navToBuy');
+  const navBought = document.querySelector('#navBought');
 
 
   if (btnAll) {
     btnAll.focus();
+    btnAll.click();
+    navToBuy.style.display = "none";
+    navBought.style.display = "none";
+
     btnAll.addEventListener("click", function() {
       navAll.style.display = "block";
       navToBuy.style.display = "none";
+      navBought.style.display = "none";
     })
 
     btnToBuy.addEventListener("click", function () {
       navAll.style.display = "none";
       navToBuy.style.display = "block";
+      navBought.style.display = "none";
+    })
+
+    btnBought.addEventListener("click", function () {
+      navAll.style.display = "none";
+      navToBuy.style.display = "none";
+      navBought.style.display = "block";
     })
   }
-
-
-
 
   const nav = document.querySelector('.nav');
   const navBtn = document.querySelector('#btnNav');
@@ -98,10 +110,10 @@ document.addEventListener('turbolinks:load', function () {
 
   const realFileBtn = document.querySelector('#product_photo');
   const previewContainer = document.querySelector('#imagePreview');
-  const previewImage = previewContainer.querySelector('.image-preview__image');
   const previewDefaultText = previewContainer.querySelector('.image-preview__text');
+  const previewImage = previewContainer.querySelector('.image-preview__image');
 
-  if (realFileBtn) {
+  if (previewImage) {
     previewContainer.addEventListener('click', function () {
       realFileBtn.click();
     })
@@ -130,32 +142,35 @@ document.addEventListener('turbolinks:load', function () {
 });
 
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   console.log("DOMContentLoaded");
-//   const realFileBtn = document.querySelector('#product_photo');
-//   const previewContainer = document.querySelector('#imagePreview');
-//   const previewImage = previewContainer.querySelector('.image-preview__image');
-//   const previewDefaultText = previewContainer.querySelector('.image-preview__text');
+document.addEventListener('DOMContentLoaded', function () {
+  console.log("DOMContentLoaded");
+  const btnAll = document.querySelector('#btnAll');
+  const btnToBuy = document.querySelector('#btnToBuy');
+  const btnBought = document.querySelector('#btnBought');
+
+  const navAll = document.querySelector('#navAll');
+  const navToBuy = document.querySelector('#navToBuy');
+  const navBought = document.querySelector('#navBought');
 
 
-//   previewContainer.addEventListener('click', function () {
-//     realFileBtn.click();
-//   })
+  if (btnAll) {
+    btnAll.focus();
+    btnAll.addEventListener("click", function () {
+      navAll.style.display = "block";
+      navToBuy.style.display = "none";
+      navBought.style.display = "none";
+    })
 
-//   realFileBtn.addEventListener("change", function () {
-//     const file = realFileBtn.files[0];
+    btnToBuy.addEventListener("click", function () {
+      navAll.style.display = "none";
+      navToBuy.style.display = "block";
+      navBought.style.display = "none";
+    })
 
-//     if (file) {
-//       const reader = new FileReader();
-//       previewDefaultText.style.display = 'none';
-//       previewImage.style.display = 'block';
-//       reader.addEventListener('load', function() {
-//         previewImage.setAttribute('src', this.result);
-//       });
-//       reader.readAsDataURL(file);
-
-//     } else {
-//       previewImage.style.display = 'none';
-//     }
-//   });
-// });
+    btnBought.addEventListener("click", function () {
+      navAll.style.display = "none";
+      navToBuy.style.display = "none";
+      navBought.style.display = "block";
+    })
+  }
+});
