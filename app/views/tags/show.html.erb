@@ -7,9 +7,13 @@
       <div data-controller="select">
         <%= link_to product_lists_path(product_id: product.id), method: :post, remote: :true do%>
           <div class="product_name" data-select-target="products" data-action= "click->select#add_product">
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+            <div class="card-category">
+              <% if product.photo.attached? %>
+                <%= cl_image_tag product.photo.key%>
+              <% else %>
+              <% end %>
             </div>
-            <%= product.name %>
+            <p class="text-center fw-bold" ><%= product.name %></p>
           </div>
         <% end %>
       </div>
