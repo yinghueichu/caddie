@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :lists, only: [:index, :create, :show]
-
+  post 'product_to_create', to: "products#product_to_create"
   get 'users', to: "users#index"
   resources :users, only: [:index] do
     member do
