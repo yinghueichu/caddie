@@ -5,7 +5,12 @@ class TagsController < ApplicationController
     @products_to_buy = policy_scope(Product).select { |product| product.aasm_state == "to_buy" }
 
     if params[:query].present?
-      @products = Product.where(name: params[:query])
+      @products = Product.all.where('name ILIKE ?', "%#{params[:query]}%")
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'list.html', locals: { products: @products } }
     end
   end
 
