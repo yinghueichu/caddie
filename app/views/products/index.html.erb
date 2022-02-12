@@ -82,11 +82,15 @@
 </div>
 
 <div class="container" id="navBought">
+
     <div class="list">
       <% if @products_bought.first.nil? %>
       <div class="msg-emptyBought"><h4>Time to do some shopping!</h4></div>
 
       <% else %>
+        <div class="btn-container">
+          <%= link_to "Finish my shopping", lists_path, method: "post", class: "btn lime darken-3" %>
+        </div>
         <% @products_bought.each do |product| %>
           <div class="list-item-container" id="product-<%= product.id %>">
           <div class="product">

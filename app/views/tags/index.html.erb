@@ -1,33 +1,3 @@
-<<<<<<< HEAD
-<div>
-  <%= form_tag tags_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Banana, beer..."
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
-</div>
-
-<% if @products && @products.size > 0 %>
-  <% @products.each do |product| %>
-    <div><%= product.name %></div>
-  <% end %>
-<% elsif @tags_category && @tags_category.size > 0 %>
-  <% @tags_category.each do |tag|  %>
-    <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-content">
-        <div class="card-product-infos">
-            <%= link_to tag.name, tag_path(tag.id) %>
-        </div>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-=======
 <div data-controller='search-products'>
   <%= form_with url: tags_path, method: :get, data: {search_products_target:'form'} do |l|%>
     <%= l.text_field :query,
@@ -40,4 +10,3 @@
     <%# <%= submit_tag "Search", class: "btn btn-primary" %>
     <%= render 'list', tags: @tags  %>
 </div>
->>>>>>> 69a7b3b599e0e89ffdcfd5b4a421819dda975f37
