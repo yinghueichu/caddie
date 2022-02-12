@@ -11,8 +11,8 @@ class Product < ApplicationRecord
   include AASM
 
   aasm do
-    state :to_buy, initial: true
-    state :bought, :archive
+    state :archive, initial: true
+    state :bought, :to_buy
 
     event :buy do
       transitions from: :to_buy, to: :bought

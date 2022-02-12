@@ -16,5 +16,6 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
     authorize @tag
+    @products_by_tag = @tag.products
   end
 end
