@@ -225,6 +225,8 @@ file_raisin = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v164
 raisin = Product.find_by_name("Raisin")
 raisin.photo.attach(io: file_raisin, filename: "Raisin_yzaete.jpg")
 
+
+
 #others
 
 # file_peanut_butter = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1643975814/development/peanut_butter_gybb0k.jpg")
@@ -281,23 +283,115 @@ Tag.create!([
   { name: "Keto",
     group_name: "regime"
   },
-  { name: "Fruit",
+  { name: "Fruits",
     group_name: "category"
   },
-  { name: "Snack",
+  { name: "Légumes",
     group_name: "category"
   },
-  { name: "Veggies",
+  { name: "Viande",
     group_name: "category"
   },
-  { name: "Protein",
+  { name: "Poisson",
+    group_name: "category"
+  },
+  { name: "Produits laitier",
+    group_name: "category"
+  },
+  { name: "Boulangerie",
+    group_name: "category"
+  },
+  { name: "Boissons",
+    group_name: "category"
+  },
+  { name: "Produit en conserve",
+    group_name: "category"
+  },
+  { name: "Petit déjeuner",
+    group_name: "category"
+  },
+  { name: "Féculents",
+    group_name: "category"
+  },
+  { name: "Produits surgelés",
+    group_name: "category"
+  },
+  { name: "Epices",
+    group_name: "category"
+  },
+  { name: "Produits d'entretien",
+    group_name: "category"
+  },
+  { name: "Hygiène/beauté",
+    group_name: "category"
+  },
+  { name: "Animaux",
     group_name: "category"
   }
-
 ])
 
 puts "#{Tag.count} tags created!"
 
+#categories
+file_fruits = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644667656/development/Pomme_sftxin.jpg")
+fruits = Tag.find_by_name("Fruits")
+fruits.photo.attach(io: file_fruits, filename: "Pomme_sftxin.jpg")
+
+file_legumes = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644685085/development/pdt_jvyrky.jpg")
+legumes = Tag.find_by_name("Légumes")
+legumes.photo.attach(io: file_legumes, filename: "pdt_jvyrky.jpg")
+
+file_viande = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644683072/development/Viande_ai3pcl.jpg")
+viande = Tag.find_by_name("Viande")
+viande.photo.attach(io: file_viande, filename: "Viande_ai3pcl.jpg")
+
+file_poisson = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644683072/development/Poisson_jrfibk.jpg")
+poisson = Tag.find_by_name("Poisson")
+poisson.photo.attach(io: file_poisson, filename: "Poisson_jrfibk.jpg")
+
+file_laitier = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644683072/development/Produit_laitier_qok3ze.jpg")
+laitier = Tag.find_by_name("Produits laitier")
+laitier.photo.attach(io: file_laitier, filename: "Produit_laitier_qok3ze.jpg")
+
+file_boulangerie = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644683072/development/Boulangerie_ncfuuo.jpg")
+boulangerie = Tag.find_by_name("Boulangerie")
+boulangerie.photo.attach(io: file_boulangerie, filename: "Boulangerie_ncfuuo.jpg")
+
+file_boisson = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644683072/development/Boisson_bleyle.jpg")
+boisson = Tag.find_by_name("Boissons")
+boisson.photo.attach(io: file_boisson, filename: "Boisson_bleyle.jpg")
+
+file_conserve = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644685442/development/conservebis_mvbhbd.jpg")
+conserve = Tag.find_by_name("Produits en conserve")
+conserve.photo.attach(io: file_conserve, filename: "conservebis_mvbhbd.jpg")
+
+file_petitdej = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644683071/development/Petit_d%C3%A9jeuner_ddyjbl.jpg")
+petitdej = Tag.find_by_name("Petit déjeuner")
+petitdej.photo.attach(io: file_petitdej, filename: "Petit_d%C3%A9jeuner_ddyjbl.jp")
+
+file_feculent = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644683071/development/feculent_dhn6mh.jpg")
+feculent = Tag.find_by_name("Féculents")
+feculent.photo.attach(io: file_feculent, filename: "feculent_dhn6mh.jpg")
+
+file_surgele = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644683071/development/produit_surgel%C3%A9_ei6vef.jpg")
+surgele = Tag.find_by_name("Produits surgelés")
+surgele.photo.attach(io: file_surgele, filename: "produit_surgel%C3%A9_ei6vef.jpg")
+
+file_epice = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644683071/development/epices_fgldq5.jpg")
+epice = Tag.find_by_name("Epices")
+epice.photo.attach(io: file_epice, filename: "epices_fgldq5.jpg")
+
+file_entretien = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644683071/development/entretien_jlzoab.png")
+entretien = Tag.find_by_name("Produits d'entretien")
+entretien.photo.attach(io: file_entretien, filename: "entretien_jlzoab.png")
+
+file_beaute = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644683072/development/Beaut%C3%A9_uiwiig.jpg")
+beaute = Tag.find_by_name("Hygiène/beauté")
+beaute.photo.attach(io: file_beaute, filename: "Beaut%C3%A9_uiwiig.jpg")
+
+file_animaux = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644685582/development/animauxbis_byozws.jpg")
+animaux = Tag.find_by_name("Animaux")
+animaux.photo.attach(io: file_animaux, filename: "animauxbis_byozws.jpg")
 
 puts "Tagging product.."
 
@@ -335,70 +429,70 @@ ProductTag.create!([
 
   #fruits
   { product_id: (Product.find_by_name("Abricot").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Ananas").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Avocat").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Banane").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Cerise").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Citron").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
     { product_id: (Product.find_by_name("Citron vert").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Figue").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Fraise").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Framboise").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Kiwi").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Melon").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Mûre").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Myrtille").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Nectarine").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Noix de coco").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Orange").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Pêche").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Poire").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Pomme").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Prune").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   },
   { product_id: (Product.find_by_name("Raisin").id),
-    tag_id: (Tag.find_by_name("Fruit").id)
+    tag_id: (Tag.find_by_name("Fruits").id)
   }
 ])
 
