@@ -43,6 +43,14 @@
   grid-gap: 16px;
 }
 
+.cards {
+  a {
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+  }
+}
+
 .card-category {
   img {
     height: 100px;

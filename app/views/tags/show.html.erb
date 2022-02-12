@@ -1,5 +1,5 @@
-<div class="container">
-  <h2><%= @tag.name %></h2>
+<div class="container-fluid">
+  <h4 class="text-center fw-bolder mb-3"><%= @tag.name %></h2>
 
   <div class="cards">
 
@@ -9,14 +9,14 @@
           <div class="product_name" data-select-target="products" data-action= "click->select#add_product">
             <div class="card-category">
               <% if product.photo.attached? %>
-                <%= cl_image_tag product.photo.key%>
+                <%= cl_image_tag product.photo.key, crop: :fill%>
               <% else %>
               <% end %>
             </div>
-            <p class="text-center fw-bold" ><%= product.name %></p>
+            <p class="text-center fw-bold mb-0" ><%= product.name %></p>
           </div>
         <% end %>
       </div>
     <% end %>
-
+  </div>
 </div>
