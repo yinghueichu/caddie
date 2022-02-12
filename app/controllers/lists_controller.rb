@@ -2,6 +2,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(date: Date.today)
+    authorize @list
     @list.user = current_user
     @list.save!
 

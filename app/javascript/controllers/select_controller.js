@@ -1,14 +1,20 @@
 import { Controller } from "stimulus";
+import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
   static targets = ['products'];
 
-  connect() {
+  to_buy_product(event){
+    // console.log(this.productsTarget.firstElementChild.style.border = "4px solid green");
+    event.preventDefault();
     console.log(this.element);
-    console.log(this.productsTarget);
-  }
-
-  add_product(){
-    console.log(this.productsTarget.firstElementChild.style.border = "4px solid green");
+    console.log(this.element.children[0].children[0].children[2].getAttribute("id"));
+    const productId = this.element.children[0].children[0].children[2].getAttribute("id")
+    const url = `/products/${productId}`;
+    console.log(url);
+    fetch(url, {
+      method: 'PATCH',
+      headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() }
+    })
   }
 }

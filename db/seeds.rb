@@ -50,13 +50,13 @@ Product.create!([
     user_id: ( User.first.id + 2)
   },
   { name: "Abricot",
-    user_id: User.first.id
+    user_id: ( User.first.id + 2)
   },
   { name: "Asperges",
-    user_id: User.first.id
+    user_id: ( User.first.id + 2)
   },
   { name: "Aubergines",
-    user_id: User.first.id
+    user_id: ( User.first.id + 2)
   },
   { name: "Pomme",
     user_id: User.first.id

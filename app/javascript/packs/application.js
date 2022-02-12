@@ -7,6 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "controllers"
 
 Rails.start()
 Turbolinks.start()
@@ -52,6 +53,26 @@ window.$ = $;
 
 document.addEventListener('turbolinks:load', function () {
   console.log("turbolinks ready!");
+
+  const btnAll = document.querySelector('#btnAll');
+  const btnToBuy = document.querySelector('#btnToBuy');
+  const navAll = document.querySelector('#navAll');
+  const navToBuy = document.querySelector('#navToBuy');
+
+
+  if (btnAll) {
+    btnAll.focus();
+    btnAll.addEventListener("click", function() {
+      navAll.style.display = "block";
+      navToBuy.style.display = "none";
+    })
+
+    btnToBuy.addEventListener("click", function () {
+      navAll.style.display = "none";
+      navToBuy.style.display = "block";
+    })
+  }
+
 
 
 
@@ -138,5 +159,3 @@ document.addEventListener('turbolinks:load', function () {
 //     }
 //   });
 // });
-
-import "controllers"
