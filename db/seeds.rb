@@ -128,6 +128,28 @@ Product.create!([
   { name: "Raisin",
     user_id: User.first.id
   },
+  #produits qui commencent par Sa
+  { name: "Saumon",
+    user_id: User.first.id
+  },
+  { name: "Sacs poubelle",
+    user_id: User.first.id
+  },
+  { name: "Savon",
+    user_id: User.first.id
+  },
+  { name: "Salade",
+    user_id: User.first.id
+  },
+  { name: "Saucisses",
+    user_id: User.first.id
+  },
+  { name: "Saucisson",
+    user_id: User.first.id
+  },
+  { name: "Sauce tomate",
+    user_id: User.first.id
+  }
 ])
 
 require "open-uri"
@@ -225,6 +247,36 @@ file_raisin = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v164
 raisin = Product.find_by_name("Raisin")
 raisin.photo.attach(io: file_raisin, filename: "Raisin_yzaete.jpg")
 
+#produits qui commencent par "Sa" pour la démo ;)
+
+file_saumon = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644826680/development/Saumon_jpsitg.jpg")
+saumon = Product.find_by_name("Saumon")
+saumon.photo.attach(io: file_saumon, filename: "Saumon_jpsitg.jpg")
+
+file_sac = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644826680/development/Sac_gizamd.jpg")
+sac = Product.find_by_name("Sacs poubelle")
+sac.photo.attach(io: file_sac, filename: "Sac_gizamd.jpg")
+
+file_savon = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644825642/development/nst5bhzkd44u8hfp4vacnpkw3de9.jpg")
+savon = Product.find_by_name("Savon")
+savon.photo.attach(io: file_savon, filename: "nst5bhzkd44u8hfp4vacnpkw3de9.jpg")
+
+file_salade = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644826680/development/salade_ydpprz.jpg")
+salade = Product.find_by_name("Salade")
+salade.photo.attach(io: file_salade, filename: "salade_ydpprz.jpg")
+
+file_saucisse = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644826680/development/saucisse_fpov50.jpg")
+saucisse = Product.find_by_name("Saucisses")
+saucisse.photo.attach(io: file_saucisse, filename: "saucisse_fpov50.jpg")
+
+file_saucisson = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644827735/development/saucisson_bis_kxwqzm.jpg")
+saucisson = Product.find_by_name("Saucisson")
+saucisson.photo.attach(io: file_saucisson, filename: "saucisson_bis_kxwqzm.jpg")
+
+file_sauce = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644826680/development/sauce_tomate_x9uxno.jpg")
+sauce = Product.find_by_name("Sauce tomate")
+sauce.photo.attach(io: file_sauce, filename: "sauce_tomate_x9uxno.jpg")
+
 
 
 #others
@@ -304,7 +356,7 @@ Tag.create!([
   { name: "Boissons",
     group_name: "category"
   },
-  { name: "Produit en conserve",
+  { name: "Produits en conserve",
     group_name: "category"
   },
   { name: "Petit déjeuner",
@@ -493,6 +545,28 @@ ProductTag.create!([
   },
   { product_id: (Product.find_by_name("Raisin").id),
     tag_id: (Tag.find_by_name("Fruits").id)
+  },
+  #produits qui commencent par Sa
+  { product_id: (Product.find_by_name("Saumon").id),
+    tag_id: (Tag.find_by_name("Poisson").id)
+  },
+  { product_id: (Product.find_by_name("Sacs poubelle").id),
+    tag_id: (Tag.find_by_name("Produits d'entretien").id)
+  },
+  { product_id: (Product.find_by_name("Savon").id),
+    tag_id: (Tag.find_by_name("Hygiène/beauté").id)
+  },
+  { product_id: (Product.find_by_name("Salade").id),
+    tag_id: (Tag.find_by_name("Légumes").id)
+  },
+  { product_id: (Product.find_by_name("Saucisses").id),
+    tag_id: (Tag.find_by_name("Viande").id)
+  },
+  { product_id: (Product.find_by_name("Saucisson").id),
+    tag_id: (Tag.find_by_name("Viande").id)
+  },
+  { product_id: (Product.find_by_name("Sauce tomate").id),
+    tag_id: (Tag.find_by_name("Produits en conserve").id)
   }
 ])
 
