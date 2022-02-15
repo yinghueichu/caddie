@@ -43,9 +43,21 @@
   grid-gap: 16px;
 }
 
+.cards {
+  a {
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+  }
+}
+
 .card-category {
-  height: 85px;
-  border-radius: 8px;
+  img {
+    height: 100px;
+    width: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
 }
 
 .product-name {

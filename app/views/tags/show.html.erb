@@ -1,6 +1,6 @@
 <%= render "shared/navback" %>
-<div class="container">
-  <h2><%= @tag.name %></h2>
+<div class="container-fluid">
+  <h4 class="text-center fw-bolder mb-3 mt-0"><%= @tag.name %></h2>
 
   <div class="cards">
 
@@ -8,15 +8,16 @@
       <div data-controller="select">
         <%= link_to product_path(product), method: :patch, remote: :true do%>
           <div class="product_name" data-select-target="products" data-product-id="<%= product.id %>" data-action= "click->select#to_buy_product">
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+            <div class="card-category">
+              <% if product.photo.attached? %>
+                <%= cl_image_tag product.photo.key, crop: :fill%>
+              <% else %>
+              <% end %>
             </div>
-             <div class="product-photo"></div>
-             <div id=<%= product.id %>><%= product.name %></div>
-
-
+            <p class="text-center fw-bold mb-0" ><%= product.name %></p>
           </div>
         <% end %>
       </div>
     <% end %>
-
+  </div>
 </div>
