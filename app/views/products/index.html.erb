@@ -6,6 +6,21 @@
   <button type="button" class="btnSwitch" id="btnBought">Bought</button>
 </div>
 
+<p>Mes rappels:</p>
+<% @products.each do |product| %>
+  <% if product.aasm_state != "bought" && product.aasm_state != "to_buy" %>
+    <% if product.frequency && !product.lists.empty? %>
+      <% last = product.lists.last.created_at %>
+      <% if last < product.frequency.days.ago %>
+        <%= product.name %>
+      <% end %>
+    <% elsif product.frequency %>
+      <%= product.name %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
 <div class="container" id="navAll">
     <div class="list">
       <% if @products_all.first.nil? %>
