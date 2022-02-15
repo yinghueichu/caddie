@@ -11,26 +11,4 @@
     <%= render 'list', tags: @tags  %>
 </div>
 
-<% if @products && @products.size > 0 %>
-  <% @products.each do |product| %>
-    <div>
-      <%= product.name %>
-    </div>
-  <% end %>
-<% elsif @tags_category && @tags_category.size > 0 %>
-  <% @tags_category.each do |tag|  %>
-    <div class="card-product">
-        <% if tag.photo.attached? %>
-          <%= cl_image_tag tag.photo.key, crop: :fill%>
-        <% else %>
-        <%= "ok" %>
-        <% end %>
-      <div class="card-content">
-        <div class="card-product-infos">
-            <%= link_to tag.name, tag_path(tag.id) %>
-        </div>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-    </div>
-  <% end %>
-<% end %>
+

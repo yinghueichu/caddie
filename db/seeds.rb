@@ -74,7 +74,6 @@ Product.create!([
   { name: "Citron",
     user_id: User.first.id
   },
-<<<<<<< HEAD
   { name: "Citron vert",
     user_id: User.first.id
   },
@@ -119,7 +118,7 @@ Product.create!([
   },
   { name: "Poire",
     user_id: User.first.id
-=======
+  },
   { name: "Abricot",
     user_id: ( User.first.id + 2)
   },
@@ -128,7 +127,6 @@ Product.create!([
   },
   { name: "Aubergines",
     user_id: ( User.first.id + 2)
->>>>>>> 2a872d19d3aa9ed600b9079966fd48e0d357a388
   },
   { name: "Pomme",
     user_id: User.first.id
