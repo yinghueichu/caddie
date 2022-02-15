@@ -1,6 +1,9 @@
 <div class="container">
+
     <h1>Users :</h1>
     <ul class="list-user">
       <%= render @users %>
     </ul>
+
+    <p>Current user: <%= current_user.email %></p>
 </div>

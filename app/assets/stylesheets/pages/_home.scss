@@ -1,1 +1,37 @@
 // Specific CSS for your home-page
+#navToBuy {
+  display: none;
+}
+
+.btnSwitch {
+  border: none;
+  background-color: white;
+  border-radius: 8px;
+  height: 32px;
+  margin: 4px;
+  padding: 0 16px;
+}
+
+.btnSwitchSelected {
+  background-color: #9e9d24;
+  color: white;
+}
+
+button:focus {
+  outline: none;
+  background-color: #9e9d24;
+  color: white;
+}
+
+
+.btnAll-btnToBuy {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.msg-empty {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}

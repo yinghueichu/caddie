@@ -1,12 +1,14 @@
-<div>
-  <%= form_tag tags_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Fruit..."
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
+<div data-controller='search-products'>
+  <%= form_with url: tags_path, method: :get, data: {search_products_target:'form'} do |l|%>
+    <%= l.text_field :query,
+                        class: "form-control",
+                        placeholder: "Fruit...",
+                        value: params[:query],
+                        data: { search_products_target: 'searchInput', action: 'keyup->search-products#update'}
+                      %>
+    <% end %>
+    <%# <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= render 'list', tags: @tags  %>
 </div>
 
 <% if @products && @products.size > 0 %>

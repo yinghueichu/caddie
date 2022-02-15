@@ -1,0 +1,36 @@
+<div data-search-products-target="list">
+  <% if @products && @products.size > 0 %>
+    <% @products.each do |product| %>
+      <div data-controller="select">
+          <%= link_to product_lists_path(product_id: product.id), method: :post, remote: :true do%>
+            <div class="product_name" data-select-target="products" data-action= "click->select#add_product">
+              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+              </div>
+              <%= product.name %>
+            </div>
+          <% end %>
+      </div>
+    <% end %>
+    <% elsif @products && @products.size == 0 %>
+      <div data-controller="select">
+          <div class="product_name" data-select-target="products" data-action= "click->select#unexisting_product">
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+            </div>
+            Add a new product
+          </div>
+      </div>
+  <% elsif @tags_category && @tags_category.size > 0 %>
+    <% @tags_category.each do |tag|  %>
+      <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-content">
+          <div class="card-product-infos">
+              <%= link_to tag.name, tag_path(tag.id) %>
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
