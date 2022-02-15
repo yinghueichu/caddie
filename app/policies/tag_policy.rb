@@ -8,4 +8,12 @@ class TagPolicy < ApplicationPolicy
   def show?
     return true
   end
+
+  def filters?
+    true
+  end
+
+  def filter?
+    true
+  end
 end
