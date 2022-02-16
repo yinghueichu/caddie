@@ -55,6 +55,10 @@ class ProductsController < ApplicationController
   end
 
   def product_to_create
+    # @product = Product.new(product_params)
+    # @product.user_id = current_user.id
+    # @product.re_buy
+    # @product.save!
     Product.create(name: "To fill", user_id: current_user.id, aasm_state: "to_buy")
   end
 
