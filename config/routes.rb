@@ -8,6 +8,17 @@ Rails.application.routes.draw do
       patch 'buy'
     end
   end
+
+  resources :tags do
+    collection do
+      get 'filters'
+    end
+    member do
+      get 'filter'
+    end
+  end
+
+
   resources :tags, only: [:index, :show]
   resources :product_lists, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
