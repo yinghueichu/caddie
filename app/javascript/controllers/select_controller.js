@@ -2,7 +2,13 @@ import { Controller } from "stimulus";
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ['products'];
+  static targets = ['products', 'form', 'list', 'searchInput'];
+
+  connect() {
+    console.log(this.formTarget);
+    console.log(this.listTarget);
+    console.log(this.searchInputTarget);
+  }
 
   to_buy_product(event){
     // console.log(this.productsTarget.firstElementChild.style.border = "4px solid green");
@@ -15,11 +21,16 @@ export default class extends Controller {
     })
   }
 
+  insert_text(event){
+    console.log(this.searchInputTarget.value);
+    console.log(document.querySelector('#new-product').innerText);
+    document.querySelector('#new-product').innerHTML = this.searchInputTarget.value;
+  }
+
 
   unexisting_product(event) {
     event.preventDefault();
     const url = `/product_to_create`;
-    console.log(url);
     fetch(url, {
       method: 'POST',
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() }

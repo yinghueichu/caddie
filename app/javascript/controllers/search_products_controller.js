@@ -4,12 +4,12 @@ export default class extends Controller {
 
   static targets = ["form", "searchInput", "list"]
 
-  connect() {
-    console.log(this.element);
-    console.log(this.formTarget);
-    console.log(this.listTarget);
-    console.log(this.searchInputTarget);
-  }
+  // connect() {
+  //   console.log(this.element);
+  //   console.log(this.formTarget);
+  //   console.log(this.listTarget);
+  //   console.log(this.searchInputTarget.value);
+  // }
 
   update(event) {
     const url = `${this.formTarget.action}?query=${this.searchInputTarget.value}`
