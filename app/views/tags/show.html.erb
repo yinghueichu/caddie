@@ -3,7 +3,6 @@
   <h4 class="text-center fw-bolder mb-3 mt-0"><%= @tag.name %></h2>
 
   <div class="cards">
-
     <% @tag.products.each do |product|  %>
       <div data-controller="select">
         <%= link_to product_path(product), method: :patch, remote: :true do%>

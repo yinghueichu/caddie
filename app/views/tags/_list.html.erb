@@ -1,16 +1,24 @@
 <div data-search-products-target="list">
   <% if @products && @products.size > 0 %>
-    <% @products.each do |product| %>
-      <div data-controller="select">
-          <%= link_to product_lists_path(product_id: product.id), method: :post, remote: :true do%>
-            <div class="product_name" data-select-target="products" data-action= "click->select#add_product">
-              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-              </div>
-              <%= product.name %>
-            </div>
-          <% end %>
+    <div class="container-fluid">
+      <div class="cards">
+        <% @products.each do |product| %>
+          <div data-controller="select">
+              <%= link_to product_lists_path(product_id: product.id), method: :post, remote: :true do%>
+                <div class="product_name" data-select-target="products" data-action= "click->select#add_product">
+                  <div class="card-category">
+                    <% if product.photo.attached? %>
+                      <%= cl_image_tag product.photo.key, crop: :fill%>
+                    <% else %>
+                    <% end %>
+                  </div>
+                  <p class="text-center fw-bold mb-0" ><%= product.name %></p>
+                </div>
+              <% end %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
     <% elsif @products && @products.size == 0 %>
       <div data-controller="select">
           <div class="product_name" data-select-target="products" data-action= "click->select#unexisting_product">
@@ -22,7 +30,9 @@
   <% elsif @tags_category && @tags_category.size > 0 %>
     <% @tags_category.each do |tag|  %>
       <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <% if tag.photo.attached? %>
+          <%= cl_image_tag tag.photo.key, crop: :fill%>
+        <% end %>
         <div class="card-content">
           <div class="card-product-infos">
               <%= link_to tag.name, tag_path(tag.id) %>

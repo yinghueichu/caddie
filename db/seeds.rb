@@ -57,48 +57,63 @@ Product.create!([
   # },
 #fruits
   { name: "Abricot",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Ananas",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Avocat",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Banane",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Cerise",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Citron",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Citron vert",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Figue",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Fraise",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Framboise",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Kiwi",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Madarine",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Mangue",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Melon",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Mûre",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Myrtille",
@@ -119,7 +134,17 @@ Product.create!([
   { name: "Poire",
     user_id: User.first.id
   },
+  { name: "Abricot",
+    user_id: ( User.first.id + 2)
+  },
+  { name: "Asperges",
+    user_id: ( User.first.id + 2)
+  },
+  { name: "Aubergines",
+    user_id: ( User.first.id + 2)
+  },
   { name: "Pomme",
+    frequency: 7,
     user_id: User.first.id
   },
   { name: "Prune",

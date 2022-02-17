@@ -1,36 +1,14 @@
 <div data-controller='search-products'>
-  <%= form_with url: tags_path, method: :get, data: {search_products_target:'form'} do |l|%>
-    <%= l.text_field :query,
-                        class: "form-control",
-                        placeholder: "Fruit...",
-                        value: params[:query],
-                        data: { search_products_target: 'searchInput', action: 'keyup->search-products#update'}
-                      %>
-    <% end %>
-    <%# <%= submit_tag "Search", class: "btn btn-primary" %>
-    <%= render 'list', tags: @tags  %>
+  <div class="container mt-2">
+    <%= form_with url: tags_path, method: :get, data: {search_products_target:'form'} do |l|%>
+      <%= l.text_field :query,
+                          class: "form-control",
+                          placeholder: "Recherchez un produit",
+                          value: params[:query],
+                          data: { search_products_target: 'searchInput', action: 'keyup->search-products#update'}
+                        %>
+      <% end %>
+  </div>
+  <%# <%= submit_tag "Search", class: "btn btn-primary" %>
+  <%= render 'list', tags: @tags  %>
 </div>
-
-<% if @products && @products.size > 0 %>
-  <% @products.each do |product| %>
-    <div>
-      <%= product.name %>
-    </div>
-  <% end %>
-<% elsif @tags_category && @tags_category.size > 0 %>
-  <% @tags_category.each do |tag|  %>
-    <div class="card-product">
-        <% if tag.photo.attached? %>
-          <%= cl_image_tag tag.photo.key, crop: :fill%>
-        <% else %>
-        <%= "ok" %>
-        <% end %>
-      <div class="card-content">
-        <div class="card-product-infos">
-            <%= link_to tag.name, tag_path(tag.id) %>
-        </div>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-    </div>
-  <% end %>
-<% end %>
