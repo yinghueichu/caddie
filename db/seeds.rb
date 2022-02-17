@@ -404,7 +404,11 @@ Tag.create!([
   },
   { name: "Animaux",
     group_name: "category"
+  },
+  { name: "All",
+    group_name: "all"
   }
+
 ])
 
 puts "#{Tag.count} tags created!"

@@ -1,4 +1,12 @@
-<%= render "shared/filter_link" %>
+<div class="container">
+  <div class="app-bar-top">
+    <%= link_to filters_tags_path do %>
+      <i class="material-icons lime-text text-darken-3">filter_list</i>
+    <% end %>
+    <div class="tag tag-selected"><%= @filter.name %></div>
+
+  </div>
+</div>
 
 <div class="btnAll-btnToBuy">
   <button type="button" class="btnSwitch" id="btnAll">All</button>
@@ -6,59 +14,12 @@
   <button type="button" class="btnSwitch" id="btnBought">Bought</button>
 </div>
 
-<div class="container">
-<p>Mes rappels:</p>
-  <% @products.each do |product| %>
-    <% if product.aasm_state != "bought" && product.aasm_state != "to_buy" %>
-      <% if product.frequency && !product.lists.empty? %>
-        <% last = product.lists.last.created_at %>
-        <% if last < product.frequency.days.ago %>
-          <div class="list-item-container" id="product-<%= product.id %>">
-            <div class="product">
-              <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-                <span class="material-icons" id="checkbox">check_box_outline_blank</span>
-              <% end %>
-              <div class="product-photo">
-                <% if product.photo.attached? %>
-                  <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
-                <% end %>
-              </div>
-              <div class="product-info">
-                <p id="product-name"><%= product.name %></p>
-                <p id="product-brand">My favorite brand</p>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% elsif product.frequency %>
-        <div class="list-item-container" id="product-<%= product.id %>">
-          <div class="product">
-            <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-              <span class="material-icons" id="checkbox">check_box_outline_blank</span>
-            <% end %>
-            <div class="product-photo">
-              <% if product.photo.attached? %>
-                <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
-              <% end %>
-            </div>
-            <div class="product-info">
-              <p id="product-name"><%= product.name %></p>
-              <p id="product-brand">My favorite brand</p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
-
 <div class="container" id="navAll">
-<p>Ma liste:</p>
     <div class="list">
-      <% if @products_all.first.nil? %>
+      <% if @products_all_by_filter.first.nil? %>
         <div class="msg-empty"><h4>Add some stuff you need to buy!</h4></div>
       <% else %>
-        <% @products_all.each do |product| %>
+        <% @products_all_by_filter.each do |product| %>
           <div class="list-item-container" id="product-<%= product.id %>">
           <div class="product">
           <% if product.aasm_state == "to_buy" %>
@@ -98,10 +59,10 @@
 
 <div class="container" id="navToBuy">
     <div class="list">
-      <% if @products_to_buy.first.nil? %>
+      <% if @products_to_buy_by_filter.first.nil? %>
       <div class="msg-empty"><h4>Add some stuff you need to buy!</h4></div>
       <% else %>
-        <% @products_to_buy.each do |product| %>
+        <% @products_to_buy_by_filter.each do |product| %>
           <div class="list-item-container" id="product-<%= product.id %>">
           <div class="product">
           <% if product.aasm_state == "to_buy" %>
@@ -140,14 +101,14 @@
 <div class="container" id="navBought">
 
     <div class="list">
-      <% if @products_bought.first.nil? %>
+      <% if @products_bought_by_filter.first.nil? %>
       <div class="msg-empty"><h4>Time to do some shopping!</h4></div>
 
       <% else %>
         <div class="btn-container">
           <%= link_to "Finish my shopping", lists_path, method: "post", class: "btn lime darken-3" %>
         </div>
-        <% @products_bought.each do |product| %>
+        <% @products_bought_by_filter.each do |product| %>
           <div class="list-item-container" id="product-<%= product.id %>">
           <div class="product">
           <% if product.aasm_state == "to_buy" %>

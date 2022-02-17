@@ -1,0 +1,11 @@
+<%= render 'shared/navback' %>
+
+<div class="container">
+  <% @filters.each do |filter| %>
+    <div class="container-tag">
+      <div class="filter tag-unselected">
+        <%= link_to filter.name,  filter_tag_path(filter) %>
+      </div>
+    </div>
+  <% end %>
+</div>
