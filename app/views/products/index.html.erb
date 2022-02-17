@@ -26,7 +26,12 @@
             <div class="product-info">
               <p id="product-name"><%= product.name %></p>
               <p id="product-brand">My favorite brand</p>
+              <% if (Time.new - product.updated_at ).div(60) < 30 %>
+                <p class="added-time">Added <%= (Time.new - product.updated_at ).div(60) %> min ago by <%= product.user.name %></p>
+              <% end %>
             </div>
+
+
           <% else %>
             <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
               <span class="material-icons lime-text text-darken-3" id="checkbox">check_box</span>
