@@ -55,7 +55,11 @@ class ProductsController < ApplicationController
   end
 
   def product_to_create
-    Product.create(name: "To fill", user_id: current_user.id, aasm_state: "to_buy")
+    product_params = params["product"]
+    product_name = JSON.parse(product_params)["name"]
+    @product = Product.new(name: product_name, user_id: current_user.id, aasm_state: "to_buy")
+    authorize @product
+    @product.save
   end
 
   def create
