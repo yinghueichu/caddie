@@ -35,6 +35,7 @@ class ProductsController < ApplicationController
       @product.delete_from_to_buy
     end
 
+    @product.user = current_user
     @product.save
 
     authorize @products
