@@ -2,10 +2,11 @@ import { Controller } from "stimulus";
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ['products'];
+  static targets = ['products', 'productCount'];
 
   to_buy_product(event){
     event.preventDefault();
+    console.log(event.currentTarget)
     const productId = event.currentTarget.dataset.productId;
     console.log(productId)
     const cardStyle = event.currentTarget.querySelector(".card-category").style
@@ -17,6 +18,10 @@ export default class extends Controller {
     fetch(url, {
       method: 'PATCH',
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() }
+    })
+    .then(res=> res.json())
+    .then(data => {
+      document.getElementById("number-products-bought-text").innerText = data.count
     })
   }
 

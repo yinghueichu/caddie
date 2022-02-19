@@ -5,7 +5,7 @@
         <% @products.each do |product| %>
           <div data-controller="select">
               <%= link_to product_lists_path(product_id: product.id), method: :post, remote: :true do%>
-                <div class="product_name" data-select-target="products" data-action= "click->select#add_product">
+                <div class="product_name" data-select-target="products" data-action= "click->select#to_buy_product">
                   <div class="card-category">
                     <% if product.photo.attached? %>
                       <%= cl_image_tag product.photo.key, crop: :fill%>
@@ -20,18 +20,21 @@
       </div>
     </div>
     <% elsif @products && @products.size == 0 %>
-      <div data-controller="select">
-        <div class="product_name" data-select-target="products" data-action= "click->select#unexisting_product">
-            <div class="container-fluid">
-              <div class="cards">
-                <div class="card-category">
-                <img src="https://res.cloudinary.com/yinghueichu/image/upload/v1645262917/development/createProduct_oaikjq.jpg">
-                <p class="text-center fw-bold mb-0">Add a new product</p>
-              </div>
+      <div class="container-fluid">
+        <div class="cards">
+          <%= link_to products_path(), method: :post do %>
+            <div id="new-product">
+              <span id="new-product-text">Ajouter<br><%= @query %></span>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
+      <%# <div data-controller="select">
+          <div class="product_name" data-select-target="products" data-action= "click->select#unexisting_product">
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+            </div>
+          </div>
+      </div> %>
   <% elsif @tags_category && @tags_category.size > 0 %>
     <% @tags_category.each do |tag|  %>
       <div class="card-product">

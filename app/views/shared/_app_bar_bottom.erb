@@ -3,9 +3,11 @@
 
       <%= link_to products_path do %>
         <span class="material-icons lime-text text-darken-3" id="receipt-long">receipt_long</span>
-        <% unless @products_to_buy.count == 0 %>
-          <div class="number-products-bought"><span id="number-products-bought-text"><%= @products_to_buy.count %></span></div>
-        <% end %>
+        <div data-controller="select">
+          <% unless @products_to_buy.count == 0 %>
+            <div class="number-products-bought"><span id="number-products-bought-text" data-select-target="productCount"><%= @products_to_buy.count %></span></div>
+          <% end %>
+        </div>
       <% end %>
 
       <%= link_to tags_path do %>

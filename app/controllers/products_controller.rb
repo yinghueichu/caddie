@@ -25,22 +25,30 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @products = Product.all
     @product = Product.find(params[:id])
     authorize @product
+
     if @product.aasm_state == "archive"
       @product.re_buy
     elsif @product.aasm_state == "to_buy"
       @product.delete_from_to_buy
     end
     @product.save
-    # redirect_to products_path(anchor: "product-#{@product.id}")
+
+    authorize @products
+
+    respond_to do |format|
+      format.json { render json: {count: @products_to_buy.count}.to_json }
+    end
   end
 
   def buy
     @product = Product.find(params[:id])
     authorize @product
     @product.buy
-    @product.save!
+    @product.save
+    redirect_to products_path(anchor: "product-#{ @product.id + 1 }")
   end
 
   def new
@@ -74,8 +82,12 @@ class ProductsController < ApplicationController
       "Every month" => 30,
       "Personalise..." => nil
     }
-    @product = Product.new(product_params)
-    @product.user = current_user
+    if params[:query]
+      @product = Product.new(name: params[:query], user_id: current_user.id, aasm_state: "to_buy")
+    else
+      @product = Product.new(product_params)
+      @product.user = current_user
+    end
     authorize @product
 
     if @product.save

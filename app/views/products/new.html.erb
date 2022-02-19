@@ -12,7 +12,9 @@
           </div>
         </div>
         <%= f.input :photo, label:false, as: :file, display: "none" %>
+        <div class="mt-4">
         <%= f.input :name, label:false, autofocus: true, placeholder: "Product name" %>
+        </div>
         <%= f.input :frequency, label: "Remind me",
                                 selected: "Never",
                                 collection: @frequency_options.map { |key, val| [key, val] },
