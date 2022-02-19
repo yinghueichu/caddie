@@ -33,9 +33,7 @@ class ProductsController < ApplicationController
     @product.user = current_user
     @product.save
     @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }
-    # render "shared/_app_bar_bottom"
     respond_to do |format|
-      format.html {redirect_to tags_path}
       format.json { render json: {count: @products_to_buy.count}.to_json }
     end
   end
