@@ -29,7 +29,8 @@
                     <p id="product-name"><%= product.name %></p>
                     <% if product.to_buy_at %>
                       <% if (Time.new - product.to_buy_at ).div(60) < 30 && product.aasm_state == "to_buy" %>
-                      <p class="added-time">Added <%= (Time.new - product.to_buy_at ).div(60) %> min ago by <%= product.user.name %></p>
+
+                      <div class="last-added"> Ajouté par <%= product.user.name %> <br> il y a <%= (Time.new - product.to_buy_at ).div(60) %> min</div>
                       <% end %>
                     <% end %>
                   </div>
