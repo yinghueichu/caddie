@@ -28,7 +28,6 @@ class ProductsController < ApplicationController
     @products = Product.all
     @product = Product.find(params[:id])
     authorize @product
-
     if @product.aasm_state == "archive"
       @product.re_buy
     elsif @product.aasm_state == "to_buy"

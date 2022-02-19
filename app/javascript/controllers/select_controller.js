@@ -6,14 +6,16 @@ export default class extends Controller {
 
   to_buy_product(event){
     event.preventDefault();
+
+
+    const cardStyle = event.currentTarget.querySelector(".card-category").style
+    if (cardStyle.border == '1px solid green')
+    cardStyle.border = "none"
+    else
+    cardStyle.border = '1px solid green'
     console.log(event.currentTarget)
     const productId = event.currentTarget.dataset.productId;
     console.log(productId)
-    const cardStyle = event.currentTarget.querySelector(".card-category").style
-      if (cardStyle.border == '1px solid green')
-        cardStyle.border = "none"
-      else
-        cardStyle.border = '1px solid green'
     const url = `/products/${productId}`;
     fetch(url, {
       method: 'PATCH',
