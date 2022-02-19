@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
     # Modification par le TA pour améliorer la lisibilité et permettre Pundit + Follow
-    @products = policy_scope(Product)
+    @products = Product.order(updated_at: :desc)
     # @products_to_buy = current_user.lists.where(status: "progress").first.products
     @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }
     @products_bought = @products.select { |product| product.aasm_state == "bought" }
@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
     authorize @product
     @product.buy
     @product.save
-    redirect_to products_path(anchor: "product-#{ @product.id + 1 }")
+    redirect_to products_path(anchor: "product-#{ @product.id - 1 }")
   end
 
   def new
