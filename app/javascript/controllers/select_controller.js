@@ -5,10 +5,15 @@ export default class extends Controller {
   static targets = ['products', 'productCount'];
 
   to_buy_product(event){
-    // console.log(this.productsTarget.firstElementChild.style.border = "4px solid green");
     event.preventDefault();
     console.log(event.currentTarget)
     const productId = event.currentTarget.dataset.productId;
+    console.log(productId)
+    const cardStyle = event.currentTarget.querySelector(".card-category").style
+      if (cardStyle.border == '1px solid green')
+        cardStyle.border = "none"
+      else
+        cardStyle.border = '1px solid green'
     const url = `/products/${productId}`;
     fetch(url, {
       method: 'PATCH',
@@ -19,7 +24,6 @@ export default class extends Controller {
       document.getElementById("number-products-bought-text").innerText = data.count
     })
   }
-
 
   unexisting_product(event) {
     event.preventDefault();
