@@ -20,7 +20,17 @@
       </div>
     </div>
     <% elsif @products && @products.size == 0 %>
-      <%= link_to "Ajouter #{@query}", products_path(), method: :post %>
+      <div class="container-fluid">
+        <div class="cards">
+          <%= link_to products_path(), method: :post do %>
+            <div id="new-product">
+              <span id="new-product-text">Ajouter<br><%= @query %></span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+
 
 
 
