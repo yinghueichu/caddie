@@ -21,11 +21,16 @@
     </div>
     <% elsif @products && @products.size == 0 %>
       <div data-controller="select">
-          <div class="product_name" data-select-target="products" data-action= "click->select#unexisting_product">
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <div class="product_name" data-select-target="products" data-action= "click->select#unexisting_product">
+            <div class="container-fluid">
+              <div class="cards">
+                <div class="card-category">
+                <img src="https://res.cloudinary.com/yinghueichu/image/upload/v1645262917/development/createProduct_oaikjq.jpg">
+                <p class="text-center fw-bold mb-0">Add a new product</p>
+              </div>
             </div>
-            Add a new product
           </div>
+        </div>
       </div>
   <% elsif @tags_category && @tags_category.size > 0 %>
     <% @tags_category.each do |tag|  %>
