@@ -28,11 +28,16 @@ class ProductsController < ApplicationController
     @products = Product.all
     @product = Product.find(params[:id])
     authorize @product
-    authorize @products
-    @product.re_buy if @product.aasm_state == "archive"
-    @product.user = current_user
+
+    if @product.aasm_state == "archive"
+      @product.re_buy
+    elsif @product.aasm_state == "to_buy"
+      @product.delete_from_to_buy
+    end
     @product.save
-    @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }
+
+    authorize @products
+
     respond_to do |format|
       format.json { render json: {count: @products_to_buy.count}.to_json }
     end
