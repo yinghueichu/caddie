@@ -27,9 +27,13 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     authorize @product
-    @product.re_buy if @product.aasm_state == "archive"
+    if @product.aasm_state == "archive"
+      @product.re_buy
+    elsif @product.aasm_state == "to_buy"
+      @product.delete_from_to_buy
+    end
     @product.save
-    redirect_to products_path(anchor: "product-#{@product.id}")
+    # redirect_to products_path(anchor: "product-#{@product.id}")
   end
 
   def buy

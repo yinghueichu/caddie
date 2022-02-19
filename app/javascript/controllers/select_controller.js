@@ -5,16 +5,20 @@ export default class extends Controller {
   static targets = ['products'];
 
   to_buy_product(event){
-    // console.log(this.productsTarget.firstElementChild.style.border = "4px solid green");
     event.preventDefault();
     const productId = event.currentTarget.dataset.productId;
+    console.log(productId)
+    const cardStyle = event.currentTarget.querySelector(".card-category").style
+      if (cardStyle.border == '1px solid green')
+        cardStyle.border = "none"
+      else
+        cardStyle.border = '1px solid green'
     const url = `/products/${productId}`;
     fetch(url, {
       method: 'PATCH',
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() }
     })
   }
-
 
   unexisting_product(event) {
     event.preventDefault();
