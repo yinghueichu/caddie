@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
     @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }
     @products_bought = @products.select { |product| product.aasm_state == "bought" }
     @products_all = @products.select { |product| product.aasm_state == "bought" || product.aasm_state == "to_buy" }
+    @products_newly_added = @products.select { |product| ((Time.new - product.updated_at ) / 60 ) < 30}
   end
 
   def edit
@@ -36,7 +37,6 @@ class ProductsController < ApplicationController
     authorize @product
     @product.buy
     @product.save!
-    redirect_to products_path(anchor: "product-#{@product.id + 1}")
   end
 
   def new
@@ -55,7 +55,11 @@ class ProductsController < ApplicationController
   end
 
   def product_to_create
-    Product.create(name: "To fill", user_id: current_user.id, aasm_state: "to_buy")
+    product_params = params["product"]
+    product_name = JSON.parse(product_params)["name"]
+    @product = Product.new(name: product_name, user_id: current_user.id, aasm_state: "to_buy")
+    authorize @product
+    @product.save
   end
 
   def create

@@ -7,6 +7,10 @@ class ProductPolicy < ApplicationPolicy
     end
   end
 
+  def product_to_create?
+    true
+  end
+
   def create?
     true
   end

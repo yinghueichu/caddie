@@ -96,6 +96,9 @@
                 <div class="product-info">
                   <p id="product-name" style="text-decoration: line-through"><%= product.name %></p>
                   <p id="product-brand">My favorite brand</p>
+                  <% if (Time.new - product.updated_at ).div(60) < 30 %>
+                    <p class="added-time">Added <%= (Time.new - product.updated_at ).div(60) %> min ago by <%= product.user.name %></p>
+                  <% end %>
                 </div>
               <% end %>
             <% end %>
