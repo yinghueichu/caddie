@@ -30,6 +30,7 @@ class ProductsController < ApplicationController
     authorize @product
     authorize @products
     @product.re_buy if @product.aasm_state == "archive"
+    @product.user = current_user
     @product.save
     @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }
     # render "shared/_app_bar_bottom"

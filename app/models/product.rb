@@ -10,7 +10,7 @@ class Product < ApplicationRecord
 
   include AASM
 
-  aasm do
+  aasm timestamps: true do
     state :archive, initial: true
     state :bought, :to_buy
 
