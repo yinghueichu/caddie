@@ -23,11 +23,16 @@ export default class extends Controller {
 
   unexisting_product(event) {
     event.preventDefault();
+    console.log(document)
     const url = `/product_to_create`;
-    console.log(url);
+
+    const typedValue = document.getElementById("query").value;
+    let formData = new FormData();
+    formData.append('product', JSON.stringify({name: typedValue}))
     fetch(url, {
       method: 'POST',
-      headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() }
+      headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
+      body: formData
     })
   }
 }

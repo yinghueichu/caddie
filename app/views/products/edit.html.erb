@@ -1,28 +1,42 @@
-<div class="container">
-  <%= @product.name %>
-  <% if @product.photo.attached? %>
-    <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
-  <% else %>
-  <% end %>
-</div>
 
-<div class="container">
-  <h2>Add new product</h2>
+<div class="container mt-4">
+  <%= link_to url_for(:back), class: "btn-close" do %>
+    <span class="material-icons grey-text text-darken-4">close</span>
+  <% end %>
   <div class="form">
     <%= simple_form_for @product do |f| %>
-        <%= f.input :name, label:false, placeholder: "Peanut butter" %>
-        <%= f.input :photo, as: :file %>
-        <%= f.input :frequency, label: "Remind me",
-                                selected: "Never",
-                                collection: @frequency_options.map { |key, val| [key, val] },
-                                label_method: :first,
-                                value_method: :second %>
-        <%= f.input :description, placeholder: "Crunchy is preferred" %>
-        <%= f.input :quantity, placeholder: "2" %>
-        <%= f.input :unity, placeholder: "jar" %>
-        <%= f.input :price, placeholder: "6€" %>
-        <%= f.input :rating, placeholder: "5" %>
-        <%= f.submit class: 'btn btn-primary', class: "btn-large lime darken-3"  %>
+      <%= f.input :photo, label:false, as: :file %>
+        <% if @product.photo.attached? %>
+          <div class="photo-selector">
+            <%= cl_image_tag @product.photo.key, class: "list-photo-2", crop: :fill %>
+          </div>
+            <p class="text-center mb-0">update image</p>
+        <% else %>
+          <div class="photo-selector">
+            <div class="image-preview" id="imagePreview">
+              <img src="" alt="Image +Preview" class="image-preview__image">
+              <span class="image-preview__text">+ Photo</span>
+            </div>
+          </div>
+        <% end %>
+      <div class="mt-4">
+        <%= f.input :name, label:false, autofocus: true, placeholder: "Product name" %>
+      </div>
+      <%= f.input :frequency, label: "Remind me",
+                              selected: @product.frequency,
+                              collection: @frequency_options.map { |key, val| [key, val] },
+                              label_method: :first,
+                              value_method: :second %>
+      <div id="quantity-unity">
+        <%= f.input :quantity, label: false, input_html: {value: f.object.quantity || '1'}  %>
+        <%= f.input :unity, label: false, selected: "unit", collection: @unit_options %>
+      </div>
+      <div class="break"><hr/></div>
+      <%= f.input :description, as: :text, label: false, placeholder: "Note" %>
+      <div class="btn-container">
+        <%= f.submit class: "btn lime darken-3"  %>
+      </div>
+
     <% end %>
   </div>
 </div>
