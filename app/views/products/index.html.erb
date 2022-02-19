@@ -6,56 +6,6 @@
   <button type="button" class="btnSwitch" id="btnBought">Bought</button>
 </div>
 
-<div class="container">
-<p>Mes rappels:</p>
-  <% @products.each do |product| %>
-    <% if product.aasm_state != "bought" && product.aasm_state != "to_buy" %>
-      <% if product.frequency && !product.lists.empty? %>
-        <% last = product.lists.last.created_at %>
-        <% if last < product.frequency.days.ago %>
-          <div class="list-item-container" id="product-<%= product.id %>">
-            <div class="product">
-              <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-                <span class="material-icons" id="checkbox">check_box_outline_blank</span>
-              <% end %>
-              <%= link_to edit_product_path(product), class: "link-block" do %>
-                <div class="product-photo">
-                  <% if product.photo.attached? %>
-                    <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
-                  <% end %>
-                </div>
-                <div class="product-info">
-                  <p id="product-name"><%= product.name %></p>
-                  <p id="product-brand">My favorite brand</p>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      <% elsif product.frequency %>
-        <div class="list-item-container" id="product-<%= product.id %>">
-          <div class="product">
-            <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-              <span class="material-icons" id="checkbox">check_box_outline_blank</span>
-            <% end %>
-            <%= link_to edit_product_path(product), class: "link-block" do %>
-              <div class="product-photo">
-                <% if product.photo.attached? %>
-                  <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
-                <% end %>
-              </div>
-              <div class="product-info">
-                <p id="product-name"><%= product.name %></p>
-                <p id="product-brand">My favorite brand</p>
-              </div>
-             <% end %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
-
 <div class="container" id="navAll">
 <p>Ma liste:</p>
   <div class="list">
@@ -77,7 +27,7 @@
                   </div>
                   <div class="product-info">
                     <p id="product-name"><%= product.name %></p>
-                    <p id="product-brand">My favorite brand</p>
+                    <%# <p id="product-brand">My favorite brand</p> %>
                     <% if (Time.new - product.updated_at ).div(60) < 30 %>
                       <p class="added-time">Added <%= (Time.new - product.updated_at ).div(60) %> min ago by <%= product.user.name %></p>
                     <% end %>
@@ -95,7 +45,7 @@
                 </div>
                 <div class="product-info">
                   <p id="product-name" style="text-decoration: line-through"><%= product.name %></p>
-                  <p id="product-brand">My favorite brand</p>
+                  <%# <p id="product-brand">My favorite brand</p> %>
                   <% if (Time.new - product.updated_at ).div(60) < 30 %>
                     <p class="added-time">Added <%= (Time.new - product.updated_at ).div(60) %> min ago by <%= product.user.name %></p>
                   <% end %>
@@ -106,6 +56,7 @@
         </div>
       <% end %>
     <% end %>
+      <%= render 'reminder'%>
   </div>
 
 
@@ -128,7 +79,7 @@
             </div>
             <div class="product-info">
               <p id="product-name"><%= product.name %></p>
-              <p id="product-brand">My favorite brand</p>
+              <%# <p id="product-brand">My favorite brand</p> %>
             </div>
           <% else %>
             <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
@@ -141,13 +92,14 @@
             </div>
             <div class="product-info">
               <p id="product-name" style="text-decoration: line-through"><%= product.name %></p>
-              <p id="product-brand">My favorite brand</p>
+              <%# <p id="product-brand">My favorite brand</p> %>
             </div>
           <% end %>
           </div>
         <% end %>
       <% end %>
     </div>
+  <%= render 'reminder'%>
 </div>
 
 <div class="container" id="navBought">
@@ -174,7 +126,7 @@
             </div>
             <div class="product-info">
               <p id="product-name"><%= product.name %></p>
-              <p id="product-brand">My favorite brand</p>
+              <%# <p id="product-brand">My favorite brand</p> %>
             </div>
           <% else %>
             <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
@@ -187,7 +139,7 @@
             </div>
             <div class="product-info">
               <p id="product-name" style="text-decoration: line-through"><%= product.name %></p>
-              <p id="product-brand">My favorite brand</p>
+              <%# <p id="product-brand">My favorite brand</p> %>
             </div>
 
           <% end %>
