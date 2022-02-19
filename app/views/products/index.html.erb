@@ -7,7 +7,6 @@
 </div>
 
 <div class="container" id="navAll">
-<p>Ma liste:</p>
   <div class="list">
     <% if @products_all.first.nil? %>
       <div class="msg-empty"><h4>Add some stuff you need to buy!</h4></div>
@@ -56,9 +55,9 @@
         </div>
       <% end %>
     <% end %>
-      <%= render 'reminder'%>
+    <%= render 'reminder'%>
   </div>
-
+</div>
 
 <div class="container" id="navToBuy">
     <div class="list">
@@ -109,9 +108,7 @@
       <div class="msg-empty"><h4>Time to do some shopping!</h4></div>
 
       <% else %>
-        <div class="btn-container">
-          <%= link_to "Finish my shopping", lists_path, method: "post", class: "btn lime darken-3" %>
-        </div>
+
         <% @products_bought.each do |product| %>
           <div class="list-item-container" id="product-<%= product.id %>">
           <div class="product">
@@ -141,10 +138,12 @@
               <p id="product-name" style="text-decoration: line-through"><%= product.name %></p>
               <%# <p id="product-brand">My favorite brand</p> %>
             </div>
-
           <% end %>
           </div>
         <% end %>
+        <div class="btn-container">
+          <%= link_to "Finish my shopping", lists_path, method: "post", class: "btn lime darken-3" %>
+        </div>
       <% end %>
     </div>
   </div>
