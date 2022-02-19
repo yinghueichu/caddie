@@ -9,6 +9,26 @@ class ProductsController < ApplicationController
     @products_newly_added = @products.select { |product| ((Time.new - product.updated_at ) / 60 ) < 30}
   end
 
+  def to_buy
+    @product = Product.find(params[:id])
+    authorize @product
+
+    if @product.aasm_state == "archive"
+      @product.re_buy
+    elsif @product.aasm_state == "to_buy"
+      @product.delete_from_to_buy
+    end
+
+    @product.user = current_user
+    @product.save
+    @products = Product.all
+    authorize @products
+    @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }
+    respond_to do |format|
+      format.json { render json: {count: @products_to_buy.count}.to_json }
+    end
+  end
+
   def edit
     @product = Product.find(params[:id])
     authorize @product
@@ -25,24 +45,21 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @products = Product.all
     @product = Product.find(params[:id])
+    @product.update(product_params)
     authorize @product
+    @frequency_options = {
+      "Never" => nil,
+      "Every week" => 7,
+      "Every 2 weeks" => 14,
+      "Every month" => 30,
+      "Personalise..." => nil
+    }
+    @unit_options = [
+      "unit", "bottle", "box", "piece", "pack",
+      "gram", "kilo", "bag", "roll", "personalise..."]
 
-    if @product.aasm_state == "archive"
-      @product.re_buy
-    elsif @product.aasm_state == "to_buy"
-      @product.delete_from_to_buy
-    end
-
-    @product.user = current_user
-    @product.save
-
-    authorize @products
-    @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }
-    respond_to do |format|
-      format.json { render json: {count: @products_to_buy.count}.to_json }
-    end
+    redirect_to products_path(anchor: "product-#{ @product.id }")
   end
 
   def buy

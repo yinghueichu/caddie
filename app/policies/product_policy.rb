@@ -34,4 +34,8 @@ class ProductPolicy < ApplicationPolicy
   def filter?
     true
   end
+
+  def to_buy?
+    true
+  end
 end

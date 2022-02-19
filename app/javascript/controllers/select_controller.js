@@ -16,7 +16,7 @@ export default class extends Controller {
     console.log(event.currentTarget)
     const productId = event.currentTarget.dataset.productId;
     console.log(productId)
-    const url = `/products/${productId}`;
+    const url = `/products/${productId}/to_buy`;
     fetch(url, {
       method: 'PATCH',
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() }

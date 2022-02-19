@@ -9,6 +9,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :products do
+    member do
+      patch 'to_buy'
+    end
+  end
+
   resources :tags do
     collection do
       get 'filters'
