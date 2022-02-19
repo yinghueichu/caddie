@@ -13,12 +13,12 @@
       <% if product.frequency && !product.lists.empty? %>
         <% last = product.lists.last.created_at %>
         <% if last < product.frequency.days.ago %>
-          <%= link_to edit_product_path(product) do %>
-            <div class="list-item-container" id="product-<%= product.id %>">
-              <div class="product">
-                <%#= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-                  <span class="material-icons" id="checkbox">check_box_outline_blank</span>
-                <%# end %>
+          <div class="list-item-container" id="product-<%= product.id %>">
+            <div class="product">
+              <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
+                <span class="material-icons" id="checkbox">check_box_outline_blank</span>
+              <% end %>
+              <%= link_to edit_product_path(product), class: "link-block" do %>
                 <div class="product-photo">
                   <% if product.photo.attached? %>
                     <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
@@ -28,17 +28,17 @@
                   <p id="product-name"><%= product.name %></p>
                   <p id="product-brand">My favorite brand</p>
                 </div>
-              </div>
+              <% end %>
             </div>
-          <% end %>
+          </div>
         <% end %>
       <% elsif product.frequency %>
-        <%= link_to edit_product_path(product) do %>
-          <div class="list-item-container" id="product-<%= product.id %>">
-            <div class="product">
-              <%#= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-                <span class="material-icons" id="checkbox">check_box_outline_blank</span>
-              <%# end %>
+        <div class="list-item-container" id="product-<%= product.id %>">
+          <div class="product">
+            <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
+              <span class="material-icons" id="checkbox">check_box_outline_blank</span>
+            <% end %>
+            <%= link_to edit_product_path(product), class: "link-block" do %>
               <div class="product-photo">
                 <% if product.photo.attached? %>
                   <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
@@ -48,9 +48,9 @@
                 <p id="product-name"><%= product.name %></p>
                 <p id="product-brand">My favorite brand</p>
               </div>
-            </div>
+             <% end %>
           </div>
-        <% end %>
+        </div>
       <% end %>
     <% end %>
   <% end %>
@@ -87,7 +87,7 @@
               <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
                 <span class="material-icons lime-text text-darken-3" id="checkbox">check_box</span>
               <% end %>
-              <%= link_to edit_product_path(product) do %>
+              <%= link_to edit_product_path(product), class: "link-block" do %>
                 <div class="product-photo">
                   <% if product.photo.attached? %>
                     <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
