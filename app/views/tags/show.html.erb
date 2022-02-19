@@ -6,7 +6,7 @@
     <% @tag.products.each do |product|  %>
       <div data-controller="select">
         <%= link_to product_path(product), method: :patch, remote: :true do%>
-          <div class="product_name" data-select-target="products" data-product-id="<%= product.id %>" data-action= "click->select#to_buy_product">
+          <div class="product_name" data-select-target="products" data-product-id="<%= product.id %>" data-action= "click->select#to_buy_product click->select#update_count">
             <div class="card-category">
               <% if product.photo.attached? %>
                 <%= cl_image_tag product.photo.key, crop: :fill%>

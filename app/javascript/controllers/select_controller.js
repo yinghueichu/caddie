@@ -2,7 +2,7 @@ import { Controller } from "stimulus";
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ['products'];
+  static targets = ['products', 'productCount'];
 
   to_buy_product(event){
     // console.log(this.productsTarget.firstElementChild.style.border = "4px solid green");
