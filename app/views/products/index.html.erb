@@ -47,10 +47,12 @@
                 </div>
                 <div class="product-info">
                   <p id="product-name" style="text-decoration: line-through"><%= product.name %></p>
-                  <%# <p id="product-brand">My favorite brand</p> %>
-                  <% if (Time.new - product.updated_at ).div(60) < 30 %>
-                    <p class="added-time">Added <%= (Time.new - product.updated_at ).div(60) %> min ago by <%= product.user.name %></p>
-                  <% end %>
+                  <% if product.to_buy_at %>
+                      <% if (Time.new - product.to_buy_at ).div(60) < 30 && product.aasm_state == "to_buy" %>
+
+                      <div class="last-added"> Ajouté par <%= product.user.name %> <br> il y a <%= (Time.new - product.to_buy_at ).div(60) %> min</div>
+                      <% end %>
+                    <% end %>
                 </div>
               <% end %>
             <% end %>

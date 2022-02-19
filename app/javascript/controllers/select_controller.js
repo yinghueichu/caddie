@@ -23,7 +23,9 @@ export default class extends Controller {
     })
     .then(res=> res.json())
     .then(data => {
-      document.getElementById("number-products-bought-text").innerText = data.count
+      document.getElementById("number-products-bought-text").innerText = data.count;
+      // console.log(document.querySelector("number-products-bought"));
+      // document.querySelector("number-products-bought").classList.add("number-products-bought-bigger");
     })
   }
 
