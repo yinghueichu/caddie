@@ -3,8 +3,9 @@ class TagsController < ApplicationController
     @tags_category = Tag.all.where(group_name: "category")
     @products_to_buy = policy_scope(Product).select { |product| product.aasm_state == "to_buy" }
 
-    if params[:query].present?
-      @products = Product.all.where('name ILIKE ?', "%#{params[:query]}%")
+    @query = params[:query]
+    if @query.present?
+      @products = Product.all.where('name ILIKE ?', "%#{@query}%")
     end
 
     respond_to do |format|

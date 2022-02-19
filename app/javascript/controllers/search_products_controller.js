@@ -17,6 +17,8 @@ export default class extends Controller {
       .then(response => response.text())
       .then((data) => {
         this.listTarget.outerHTML = data;
+        const query = document.getElementById("query").value
+        document.querySelector("a").attributes.href.value += `/?query=${query}`
       })
   }
 }

@@ -74,8 +74,12 @@ class ProductsController < ApplicationController
       "Every month" => 30,
       "Personalise..." => nil
     }
-    @product = Product.new(product_params)
-    @product.user = current_user
+    if params[:query]
+      @product = Product.new(name: params[:query], user_id: current_user.id, aasm_state: "to_buy")
+    else
+      @product = Product.new(product_params)
+      @product.user = current_user
+    end
     authorize @product
 
     if @product.save

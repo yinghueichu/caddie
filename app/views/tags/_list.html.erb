@@ -20,13 +20,17 @@
       </div>
     </div>
     <% elsif @products && @products.size == 0 %>
-      <div data-controller="select">
+      <%= link_to "Ajouter #{@query}", products_path(), method: :post %>
+
+
+
+      <%# <div data-controller="select">
           <div class="product_name" data-select-target="products" data-action= "click->select#unexisting_product">
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
             </div>
             Add a new product
           </div>
-      </div>
+      </div> %>
   <% elsif @tags_category && @tags_category.size > 0 %>
     <% @tags_category.each do |tag|  %>
       <div class="card-product">
