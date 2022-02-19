@@ -32,9 +32,10 @@ class ProductsController < ApplicationController
     @product.re_buy if @product.aasm_state == "archive"
     @product.save
     @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }
-    render "shared/_app_bar_bottom"
+    # render "shared/_app_bar_bottom"
     respond_to do |format|
-      format.text { render "shared/_app_bar_bottom"}  # Follow regular flow of Rails
+      format.html {redirect_to tags_path}
+      format.json { render json: {count: @products_to_buy.count}.to_json }
     end
   end
 

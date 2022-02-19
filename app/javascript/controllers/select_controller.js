@@ -7,11 +7,16 @@ export default class extends Controller {
   to_buy_product(event){
     // console.log(this.productsTarget.firstElementChild.style.border = "4px solid green");
     event.preventDefault();
+    console.log(event.currentTarget)
     const productId = event.currentTarget.dataset.productId;
     const url = `/products/${productId}`;
     fetch(url, {
       method: 'PATCH',
       headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() }
+    })
+    .then(res=> res.json())
+    .then(data => {
+      document.getElementById("number-products-bought-text").innerText = data.count
     })
   }
 
