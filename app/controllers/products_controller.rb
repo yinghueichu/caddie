@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
     # Modification par le TA pour améliorer la lisibilité et permettre Pundit + Follow
-    @products = policy_scope(Product)
+    @products = Product.order(updated_at: :desc)
     # @products_to_buy = current_user.lists.where(status: "progress").first.products
     @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }
     @products_bought = @products.select { |product| product.aasm_state == "bought" }
@@ -28,14 +28,17 @@ class ProductsController < ApplicationController
     @products = Product.all
     @product = Product.find(params[:id])
     authorize @product
-    authorize @products
-    @product.re_buy if @product.aasm_state == "archive"
-    @product.user = current_user
+
+    if @product.aasm_state == "archive"
+      @product.re_buy
+    elsif @product.aasm_state == "to_buy"
+      @product.delete_from_to_buy
+    end
     @product.save
-    @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }
-    # render "shared/_app_bar_bottom"
+
+    authorize @products
+
     respond_to do |format|
-      format.html {redirect_to tags_path}
       format.json { render json: {count: @products_to_buy.count}.to_json }
     end
   end
@@ -45,7 +48,7 @@ class ProductsController < ApplicationController
     authorize @product
     @product.buy
     @product.save
-    redirect_to products_path(anchor: "product-#{ @product.id + 1 }")
+    redirect_to products_path(anchor: "product-#{ @product.id - 1 }")
   end
 
   def new
