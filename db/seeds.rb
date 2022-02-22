@@ -120,14 +120,11 @@ Product.create!([
   { name: "Poire",
     user_id: User.first.id
   },
-  { name: "Abricot",
-    user_id: ( User.first.id + 2)
-  },
   { name: "Asperges",
-    user_id: ( User.first.id + 2)
+    user_id: User.first.id
   },
   { name: "Aubergines",
-    user_id: ( User.first.id + 2)
+    user_id: User.first.id
   },
   { name: "Pomme",
     user_id: User.first.id
@@ -166,9 +163,10 @@ Product.create!([
 require "open-uri"
 
 #fruits
-file_abricot = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644663319/development/Abricot_oprkog.jpg")
+
+file_abricot = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1645553243/Abricot_bis_ka2pwb.jpg")
 abricot = Product.find_by_name("Abricot")
-abricot.photo.attach(io: file_abricot, filename: "Abricot_oprkog.jpg")
+abricot.photo.attach(io: file_abricot, filename: "Abricot_bis_ka2pwb.jpg")
 
 file_ananas = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644667656/development/Ananas_wzyti1.jpg")
 ananas = Product.find_by_name("Ananas")
