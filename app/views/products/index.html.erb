@@ -1,16 +1,16 @@
 <%= render "shared/filter_link" %>
 
 <div class="btnAll-btnToBuy">
-  <button type="button" class="btnSwitch" id="btnAll">All</button>
-  <button type="button" class="btnSwitch" id="btnToBuy">To buy</button>
-  <button type="button" class="btnSwitch" id="btnBought">Bought</button>
+  <button type="button" class="btnSwitch" id="btnAll">Tout</button>
+  <button type="button" class="btnSwitch" id="btnToBuy">À acheter</button>
+  <button type="button" class="btnSwitch" id="btnBought">Acheté</button>
 </div>
 
 <div class="container" id="navAll">
   <%= render 'reminder'%>
   <div class="list">
     <% if @products_all.first.nil? %>
-      <div class="msg-empty"><h4>Add some stuff you need to buy!</h4></div>
+      <div class="msg-empty"><h4>Ajoutez les produits à acheter :)</h4></div>
     <% else %>
       <% @products_all.each do |product| %>
         <div class="list-item-container" id="product-<%= product.id %>">
@@ -68,7 +68,7 @@
   <%= render 'reminder'%>
   <div class="list">
     <% if @products_to_buy.first.nil? %>
-      <div class="msg-empty"><h4>Add some stuff you need to buy!</h4></div>
+      <div class="msg-empty"><h4>Ajoutez les produits à acheter :)</h4></div>
     <% else %>
       <% @products_to_buy.each do |product| %>
         <div class="list-item-container" id="product-<%= product.id %>">
@@ -114,7 +114,7 @@
 <div class="container" id="navBought">
     <div class="list">
       <% if @products_bought.first.nil? %>
-      <div class="msg-empty"><h4>Time to do some shopping!</h4></div>
+      <div class="msg-empty"><h4>Il est temps d'aller faire du shopping !</h4></div>
 
       <% else %>
 

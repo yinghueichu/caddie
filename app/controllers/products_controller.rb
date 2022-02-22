@@ -33,15 +33,15 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     authorize @product
     @frequency_options = {
-      "Never" => nil,
-      "Every week" => 7,
-      "Every 2 weeks" => 14,
-      "Every month" => 30,
-      "Personalise..." => nil
+      "Jamais" => nil,
+      "Chaque semaine" => 7,
+      "Chaque 2 semaines" => 14,
+      "Chaque mois" => 30,
+      "Personnaliser..." => nil
     }
     @unit_options = [
-      "unit", "bottle", "box", "piece", "pack",
-      "gram", "kilo", "bag", "roll", "personalise..."]
+      "Unité", "Bouteille", "Boite", "Pièce", "Pack",
+      "Gramme", "Kilo", "Sac", "Rouleau", "Personnaliser..."]
   end
 
   def update
@@ -49,15 +49,15 @@ class ProductsController < ApplicationController
     @product.update(product_params)
     authorize @product
     @frequency_options = {
-      "Never" => nil,
-      "Every week" => 7,
-      "Every 2 weeks" => 14,
-      "Every month" => 30,
-      "Personalise..." => nil
+      "Jamais" => nil,
+      "Chaque semaine" => 7,
+      "Chaque 2 semaines" => 14,
+      "Chaque mois" => 30,
+      "Personnaliser..." => nil
     }
     @unit_options = [
-      "unit", "bottle", "box", "piece", "pack",
-      "gram", "kilo", "bag", "roll", "personalise..."]
+      "Unité", "Bouteille", "Boite", "Pièce", "Pack",
+      "Gramme", "Kilo", "Sac", "Rouleau", "Personnaliser..."]
 
     redirect_to products_path(anchor: "product-#{ @product.id }")
   end
@@ -74,15 +74,15 @@ class ProductsController < ApplicationController
     @product = Product.new
     authorize @product
     @frequency_options = {
-      "Never" => nil,
-      "Every week" => 7,
-      "Every 2 weeks" => 14,
-      "Every month" => 30,
-      "Personalise..." => nil
+      "Jamais" => nil,
+      "Chaque semaine" => 7,
+      "Chaque 2 semaines" => 14,
+      "Chaque mois" => 30,
+      "Personnaliser..." => nil
     }
     @unit_options = [
-      "unit", "bottle", "box", "piece", "pack",
-      "gram", "kilo", "bag", "roll", "personalise..."]
+      "Unité", "Bouteille", "Boite", "Pièce", "Pack",
+      "Gramme", "Kilo", "Sac", "Rouleau", "Personnaliser..."]
   end
 
   def product_to_create
@@ -95,11 +95,11 @@ class ProductsController < ApplicationController
 
   def create
     @frequency_options = {
-      "Never" => nil,
-      "Every week" => 7,
-      "Every 2 weeks" => 14,
-      "Every month" => 30,
-      "Personalise..." => nil
+      "Jamais" => nil,
+      "Chaque semaine" => 7,
+      "Chaque 2 semaines" => 14,
+      "Chaque mois" => 30,
+      "Personnaliser..." => nil
     }
     if params[:query]
       @product = Product.new(name: params[:query], user_id: current_user.id, aasm_state: "to_buy")
@@ -112,7 +112,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_path
     else
-      flash[:alert] = "Oups, please check your product info."
+      flash[:alert] = "Oups, vérifiez les informations de votre produit."
       render :new
     end
   end
