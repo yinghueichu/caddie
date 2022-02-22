@@ -10,7 +10,15 @@
   <%= render 'reminder'%>
   <div class="list">
     <% if @products_all.first.nil? %>
-      <div class="msg-empty"><h4>Add some stuff you need to buy!</h4></div>
+      <div class="msg-empty"><h5>Ajoutez des produits à votre liste de courses!</h5></div>
+      <%= link_to tags_path do %>
+      <div class="center">
+        <%# <i class="fa-solid fa-cart-plus" id= "cart-icon"></i> %>
+        <i class="fa-solid fa-basket-shopping" id= "cart-icon" ></i>
+        <i class="material-icons lime-text text-darken-3" id="plus-icon" >add_circle</i>
+        <%# <img src="https://res.cloudinary.com/yinghueichu/image/upload/v1645560528/cart.png_rrjx7r.png" alt="Shopping cart"> %>
+      </div>
+      <% end %>
     <% else %>
       <% @products_all.each do |product| %>
         <div class="list-item-container" id="product-<%= product.id %>">
@@ -68,7 +76,9 @@
   <%= render 'reminder'%>
   <div class="list">
     <% if @products_to_buy.first.nil? %>
-      <div class="msg-empty"><h4>Add some stuff you need to buy!</h4></div>
+      <div class="msg-empty"><h5>Ajoutez des produits à votre liste de courses!</h5></div>
+      <i class="fa-solid fa-circle-plus"></i>
+      <i class="material-icons lime-text text-darken-3 app-bar-item">add_circle</i>
     <% else %>
       <% @products_to_buy.each do |product| %>
         <div class="list-item-container" id="product-<%= product.id %>">
@@ -114,10 +124,10 @@
 <div class="container" id="navBought">
     <div class="list">
       <% if @products_bought.first.nil? %>
-      <div class="msg-empty"><h4>Time to do some shopping!</h4></div>
-
+      <div class="msg-empty"><h5>Ajoutez des produits à votre liste de courses!</h5></div>
+      <i class="fa-solid fa-circle-plus"></i>
+      <i class="material-icons lime-text text-darken-3 app-bar-item">add_circle</i>
       <% else %>
-
         <% @products_bought.each do |product| %>
           <div class="list-item-container" id="product-<%= product.id %>">
           <div class="product">
