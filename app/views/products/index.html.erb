@@ -1,9 +1,9 @@
 <%= render "shared/filter_link" %>
 
 <div class="btnAll-btnToBuy">
-  <button type="button" class="btnSwitch" id="btnAll">All</button>
-  <button type="button" class="btnSwitch" id="btnToBuy">To buy</button>
-  <button type="button" class="btnSwitch" id="btnBought">Bought</button>
+  <button type="button" class="btnSwitch" id="btnAll">Tout</button>
+  <button type="button" class="btnSwitch" id="btnToBuy">À acheter</button>
+  <button type="button" class="btnSwitch" id="btnBought">Acheté</button>
 </div>
 
 <div class="container" id="navAll">
@@ -166,11 +166,4 @@
       <% end %>
     </div>
   </div>
-
-  <div class="fixed-action-btn" id="floating-btn">
-    <%= link_to lists_path, method: "post", class: "mdc-fab btn-floating btn-large lime darken-3" do %>
-      <i class="large material-icons">done</i>
-    <%end %>
-  </div>
-
 </div>

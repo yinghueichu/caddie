@@ -10,7 +10,7 @@
           <div class="photo-selector">
             <%= cl_image_tag @product.photo.key, class: "list-photo-2", crop: :fill %>
           </div>
-            <p class="text-center mb-0">update image</p>
+            <p class="text-center mb-0">Modifier l'image</p>
         <% else %>
           <div class="photo-selector">
             <div class="image-preview" id="imagePreview">
@@ -20,9 +20,9 @@
           </div>
         <% end %>
       <div class="mt-4">
-        <%= f.input :name, label:false, autofocus: true, placeholder: "Product name" %>
+        <%= f.input :name, label:false, autofocus: true, placeholder: "Nom du produit" %>
       </div>
-      <%= f.input :frequency, label: "Remind me",
+      <%= f.input :frequency, label: "Rappel",
                               selected: @product.frequency,
                               collection: @frequency_options.map { |key, val| [key, val] },
                               label_method: :first,
@@ -34,9 +34,8 @@
       <div class="break"><hr/></div>
       <%= f.input :description, as: :text, label: false, placeholder: "Note" %>
       <div class="btn-container">
-        <%= f.submit class: "btn lime darken-3"  %>
+        <%= f.submit class: "btn lime darken-3", value: "Mettre à jour" %>
       </div>
-
     <% end %>
   </div>
 </div>
