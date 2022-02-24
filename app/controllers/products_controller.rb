@@ -1,11 +1,11 @@
 class ProductsController < ApplicationController
   def index
     # Modification par le TA pour améliorer la lisibilité et permettre Pundit + Follow
-    @products = Product.all
+    @products = Product.order(to_buy_at: :desc)
     # @products_to_buy = current_user.lists.where(status: "progress").first.products
     @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }
     @products_bought = @products.select { |product| product.aasm_state == "bought" }
-    @products_all = @products_bought + @products_to_buy
+    @products_all = @products_to_buy + @products_bought
     @products_newly_added = @products.select { |product| ((Time.new - product.updated_at ) / 60 ) < 30}
   end
 
