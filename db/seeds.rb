@@ -66,7 +66,6 @@ Product.create!([
     user_id: User.first.id
   },
   { name: "Banane",
-    frequency: 7,
     user_id: User.first.id
   },
   { name: "Cerise",
@@ -141,6 +140,7 @@ Product.create!([
   },
   { name: "Sacs",
     frequency: 7,
+    aasm_state: :to_buy,
     user_id: User.first.id
   },
   { name: "Savon",
@@ -161,10 +161,12 @@ Product.create!([
   #reminders
   { name: "Dentifrice",
     frequency: 7,
+    aasm_state: :to_buy,
     user_id: User.first.id
   },
   { name: "Lessive",
     frequency: 7,
+    aasm_state: :to_buy,
     user_id: User.first.id
   }
 ])
