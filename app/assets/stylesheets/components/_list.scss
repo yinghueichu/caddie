@@ -17,13 +17,15 @@
   font-weight: bold;
   margin-bottom: 8px;
   margin-top: 8px;
+  text-decoration: none;
 }
 
 #product-reminder {
   background-color :#EF9B38;
   border-radius : 8px;
-  padding: 4px;
+  padding: 4px 16px;
   color: white;
+  margin: 0px !important;
 
 }
 
@@ -59,7 +61,7 @@
   margin-right: 12px;
   margin-top: auto;
   margin-bottom: auto;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .list-date {
@@ -102,7 +104,35 @@
 }
 
 .link-block {
-  text-decoration: none;
+  text-decoration: none !important;
   display: flex;
-  color:black;
+  color:black !important;
+}
+
+#plus-icon {
+  font-size: 72px !important;
+  position: absolute;
+  right: 89px;
+  top: 159px;
+  width: 40px;
+}
+
+#cart-icon {
+  font-size: 150px;
+  margin-top: 40px;
+  color:#9e9d24;
+}
+
+.center{
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+
+
+.center {
+  img {
+    width :80%;
+  }
 }
