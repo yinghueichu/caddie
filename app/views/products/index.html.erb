@@ -126,9 +126,7 @@
 <div class="container" id="navBought">
     <div class="list">
       <% if @products_bought.first.nil? %>
-      <div class="msg-empty"><h5>Ajoutez des produits à votre liste de courses!</h5></div>
-      <i class="fa-solid fa-circle-plus"></i>
-      <i class="material-icons lime-text text-darken-3 app-bar-item">add_circle</i>
+      <div class="msg-empty"><h5>Cochez les produits achetés et retrouvez les ici!</h5></div>
       <% else %>
         <% @products_bought.each do |product| %>
           <div class="list-item-container" id="product-<%= product.id %>">
