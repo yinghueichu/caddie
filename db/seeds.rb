@@ -66,7 +66,6 @@ Product.create!([
     user_id: User.first.id
   },
   { name: "Banane",
-    frequency: 7,
     user_id: User.first.id
   },
   { name: "Cerise",
@@ -139,8 +138,9 @@ Product.create!([
   { name: "Saumon",
     user_id: User.first.id
   },
-  { name: "Sacs poubelle",
+  { name: "Sacs",
     frequency: 7,
+    aasm_state: :to_buy,
     user_id: User.first.id
   },
   { name: "Savon",
@@ -156,6 +156,17 @@ Product.create!([
     user_id: User.first.id
   },
   { name: "Sauce tomate",
+    user_id: User.first.id
+  },
+  #reminders
+  { name: "Dentifrice",
+    frequency: 7,
+    aasm_state: :to_buy,
+    user_id: User.first.id
+  },
+  { name: "Lessive",
+    frequency: 7,
+    aasm_state: :to_buy,
     user_id: User.first.id
   }
 ])
@@ -263,7 +274,7 @@ saumon = Product.find_by_name("Saumon")
 saumon.photo.attach(io: file_saumon, filename: "Saumon_jpsitg.jpg")
 
 file_sac = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644826680/development/Sac_gizamd.jpg")
-sac = Product.find_by_name("Sacs poubelle")
+sac = Product.find_by_name("Sacs")
 sac.photo.attach(io: file_sac, filename: "Sac_gizamd.jpg")
 
 file_savon = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644825642/development/nst5bhzkd44u8hfp4vacnpkw3de9.jpg")
@@ -286,7 +297,14 @@ file_sauce = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644
 sauce = Product.find_by_name("Sauce tomate")
 sauce.photo.attach(io: file_sauce, filename: "sauce_tomate_x9uxno.jpg")
 
+#reminders
+file_dentifrice = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1645725768/development/Dentifrice_hzdxqc.jpg")
+dentifrice = Product.find_by_name("Dentifrice")
+dentifrice.photo.attach(io: file_dentifrice, filename: "Dentifrice_hzdxqc.jpg")
 
+file_lessive = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1645725764/development/Lessive_aoohev.jpg")
+lessive = Product.find_by_name("Lessive")
+lessive.photo.attach(io: file_lessive, filename: "Lessive_aoohev.jpg")
 
 #others
 
@@ -563,7 +581,7 @@ ProductTag.create!([
   { product_id: (Product.find_by_name("Saumon").id),
     tag_id: (Tag.find_by_name("Poisson").id)
   },
-  { product_id: (Product.find_by_name("Sacs poubelle").id),
+  { product_id: (Product.find_by_name("Sacs").id),
     tag_id: (Tag.find_by_name("Produits d'entretien").id)
   },
   { product_id: (Product.find_by_name("Savon").id),
@@ -580,6 +598,13 @@ ProductTag.create!([
   },
   { product_id: (Product.find_by_name("Sauce tomate").id),
     tag_id: (Tag.find_by_name("Produits en conserve").id)
+  },
+   #Les reminders
+  { product_id: (Product.find_by_name("Dentifrice").id),
+    tag_id: (Tag.find_by_name("Produits d'entretien").id)
+  },
+  { product_id: (Product.find_by_name("Lessive").id),
+    tag_id: (Tag.find_by_name("Produits d'entretien").id)
   }
 ])
 
