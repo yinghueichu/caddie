@@ -11,7 +11,7 @@
   <div class="list">
     <% if @products_all.first.nil? %>
       <div class="msg-empty"><h5>Ajoutez des produits à votre liste de courses!</h5></div>
-      <%= link_to tags_path do %>
+      <%= link_to tags_path , id: "panier" do %>
       <div class="center">
         <i class="fa-solid fa-basket-shopping" id= "cart-icon" ></i>
         <i class="material-icons lime-text text-darken-3" id="plus-icon" >add_circle</i>
@@ -75,7 +75,7 @@
   <div class="list">
     <% if @products_to_buy.first.nil? %>
       <div class="msg-empty"><h5>Ajoutez des produits à votre liste de courses!</h5></div>
-      <%= link_to tags_path do %>
+      <%= link_to tags_path, id: "panier" do %>
       <div class="center">
         <i class="fa-solid fa-basket-shopping" id= "cart-icon" ></i>
         <i class="material-icons lime-text text-darken-3" id="plus-icon" >add_circle</i>
