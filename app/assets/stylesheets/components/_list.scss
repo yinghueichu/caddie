@@ -17,6 +17,7 @@
   font-weight: bold;
   margin-bottom: 8px;
   margin-top: 8px;
+  text-decoration: none;
 }
 
 #product-reminder {
@@ -59,7 +60,7 @@
   margin-right: 12px;
   margin-top: auto;
   margin-bottom: auto;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .list-date {
@@ -102,9 +103,9 @@
 }
 
 .link-block {
-  text-decoration: none;
+  text-decoration: none !important;
   display: flex;
-  color:black;
+  color:black !important;
 }
 
 #plus-icon {
