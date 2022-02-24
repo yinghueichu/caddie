@@ -1,11 +1,11 @@
 class ProductsController < ApplicationController
   def index
     # Modification par le TA pour améliorer la lisibilité et permettre Pundit + Follow
-    @products = Product.order(updated_at: :desc)
+    @products = Product.all
     # @products_to_buy = current_user.lists.where(status: "progress").first.products
     @products_to_buy = @products.select { |product| product.aasm_state == "to_buy" }
     @products_bought = @products.select { |product| product.aasm_state == "bought" }
-    @products_all = @products.select { |product| product.aasm_state == "bought" || product.aasm_state == "to_buy" }
+    @products_all = @products_bought + @products_to_buy
     @products_newly_added = @products.select { |product| ((Time.new - product.updated_at ) / 60 ) < 30}
   end
 
@@ -67,7 +67,7 @@ class ProductsController < ApplicationController
     authorize @product
     @product.buy
     @product.save
-    redirect_to products_path(anchor: "product-#{ @product.id - 1 }")
+    redirect_to products_path(anchor: "product-#{ @product.id }")
   end
 
   def new

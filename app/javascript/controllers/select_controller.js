@@ -8,7 +8,7 @@ export default class extends Controller {
     event.preventDefault();
 
     const cardStyle = event.currentTarget.querySelector(".card-category").classList
-    console.log(cardStyle.value);
+    // console.log(event.currentTarget.querySelector(".card-category"));
 
     if (cardStyle.value == 'card-category') {
       cardStyle.add("card-category-selected");
@@ -26,9 +26,14 @@ export default class extends Controller {
     .then(data => {
       console.log(data);
       document.getElementById("number-products-bought-text").innerText = data.count;
+      const productCountCircle = document.getElementById('number-products-bought');
+      console.log(productCountCircle);
+      productCountCircle.classList.add('product-added-effect');
+
       // console.log(document.querySelector("number-products-bought"));
       // document.querySelector("number-products-bought").classList.add("number-products-bought-bigger");
     })
+
   }
 
   unexisting_product(event) {

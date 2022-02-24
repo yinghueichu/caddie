@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "controllers"
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -21,6 +22,7 @@ ActiveStorage.start()
 
 // External imports
 import "bootstrap";
+import "extensions/turbolinks";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';

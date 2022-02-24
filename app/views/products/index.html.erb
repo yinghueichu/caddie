@@ -118,7 +118,7 @@
 
       <% else %>
 
-        <div class="btn-container">
+        <div class="btn-container" id="btn-finish">
           <%= link_to "Finish my shopping", lists_path, method: "post", class: "btn lime darken-3" %>
         </div>
         <% @products_bought.each do |product| %>
