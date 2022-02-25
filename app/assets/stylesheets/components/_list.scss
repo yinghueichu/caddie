@@ -8,6 +8,16 @@
   justify-content: start;
 }
 
+.list-item-container-bought {
+  background-color: blue;
+  height: 110px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 12px;
+  display: flex;
+  justify-content: start;
+}
+
 .product {
   display: flex;
   justify-content: flex-start;
