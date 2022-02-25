@@ -514,23 +514,44 @@ ProductTag.create!([
   { product_id: (Product.find_by_name("Abricot").id),
     tag_id: (Tag.find_by_name("Fruits").id)
   },
+  { product_id: (Product.find_by_name("Abricot").id),
+    tag_id: (Tag.find_by_name("Terroir d'Avenir").id)
+  },
   { product_id: (Product.find_by_name("Ananas").id),
     tag_id: (Tag.find_by_name("Fruits").id)
+  },
+   { product_id: (Product.find_by_name("Ananas").id),
+    tag_id: (Tag.find_by_name("Terroir d'Avenir").id)
   },
   { product_id: (Product.find_by_name("Avocat").id),
     tag_id: (Tag.find_by_name("Fruits").id)
   },
+  { product_id: (Product.find_by_name("Avocat").id),
+    tag_id: (Tag.find_by_name("Terroir d'Avenir").id)
+  },
   { product_id: (Product.find_by_name("Banane").id),
     tag_id: (Tag.find_by_name("Fruits").id)
+  },
+  { product_id: (Product.find_by_name("Banane").id),
+    tag_id: (Tag.find_by_name("Terroir d'Avenir").id)
   },
   { product_id: (Product.find_by_name("Cerise").id),
     tag_id: (Tag.find_by_name("Fruits").id)
   },
+    { product_id: (Product.find_by_name("Cerise").id),
+    tag_id: (Tag.find_by_name("Terroir d'Avenir").id)
+  },
   { product_id: (Product.find_by_name("Citron").id),
     tag_id: (Tag.find_by_name("Fruits").id)
   },
+  { product_id: (Product.find_by_name("Citron").id),
+    tag_id: (Tag.find_by_name("Terroir d'Avenir").id)
+  },
     { product_id: (Product.find_by_name("Citron vert").id),
     tag_id: (Tag.find_by_name("Fruits").id)
+  },
+     { product_id: (Product.find_by_name("Citron vert").id),
+    tag_id: (Tag.find_by_name("Terroir d'Avenir").id)
   },
   { product_id: (Product.find_by_name("Figue").id),
     tag_id: (Tag.find_by_name("Fruits").id)
@@ -576,6 +597,9 @@ ProductTag.create!([
   },
   { product_id: (Product.find_by_name("Raisin").id),
     tag_id: (Tag.find_by_name("Fruits").id)
+  },
+   { product_id: (Product.find_by_name("Raisin").id),
+    tag_id: (Tag.find_by_name("Terroir d'Avenir").id)
   },
   #produits qui commencent par Sa
   { product_id: (Product.find_by_name("Saumon").id),

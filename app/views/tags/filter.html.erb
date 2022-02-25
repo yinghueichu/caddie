@@ -8,141 +8,64 @@
   </div>
 </div>
 
+
 <div class="btnAll-btnToBuy">
-  <button type="button" class="btnSwitch" id="btnAll">All</button>
-  <button type="button" class="btnSwitch" id="btnToBuy">To buy</button>
-  <button type="button" class="btnSwitch" id="btnBought">Bought</button>
+  <button type="button" class="btnSwitch" id="btnAll">Tout</button>
+  <button type="button" class="btnSwitch" id="btnToBuy">À acheter</button>
+  <button type="button" class="btnSwitch" id="btnBought">Acheté</button>
 </div>
 
 <div class="container" id="navAll">
-    <div class="list">
-      <% if @products_all_by_filter.first.nil? %>
-        <div class="msg-empty"><h4>Add some stuff you need to buy!</h4></div>
-      <% else %>
-        <% @products_all_by_filter.each do |product| %>
-          <div class="list-item-container" id="product-<%= product.id %>">
-          <div class="product">
-          <% if product.aasm_state == "to_buy" %>
-            <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-              <span class="material-icons" id="checkbox">check_box_outline_blank</span>
-            <% end %>
-            <div class="product-photo"></div>
-              <% if product.photo.attached? %>
-                <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
-              <% end %>
-            </div>
-            <div class="product-info">
-              <p id="product-name"><%= product.name %></p>
-            </div>
-          <% else %>
-            <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-              <span class="material-icons lime-text text-darken-3" id="checkbox">check_box</span>
-            <% end %>
-            <div class="product-photo"></div>
-              <% if product.photo.attached? %>
-                <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
-              <% end %>
-            </div>
-            <div class="product-info">
-              <p id="product-name" style="text-decoration: line-through"><%= product.name %></p>
-            </div>
-
-        <% end %>
-        </div>
+  <%# <%= render 'products/reminder'%>
+  <div class="list">
+    <% if @products_all_by_filter.first.nil? %>
+      <div class="msg-empty"><h5>Ajoutez des produits à votre liste de courses!</h5></div>
+      <%= link_to tags_path , id: "panier" do %>
+      <div class="center">
+        <i class="fa-solid fa-basket-shopping" id= "cart-icon" ></i>
+        <i class="material-icons lime-text text-darken-3" id="plus-icon" >add_circle</i>
+      </div>
       <% end %>
-      <% end %>
+    <% else %>
 
-    </div>
+        <%= render 'products_all'%>
+
+    <% end %>
+
   </div>
+</div>
 
 <div class="container" id="navToBuy">
-    <div class="list">
-      <% if @products_to_buy_by_filter.first.nil? %>
-      <div class="msg-empty"><h4>Add some stuff you need to buy!</h4></div>
-      <% else %>
-        <% @products_to_buy_by_filter.each do |product| %>
-          <div class="list-item-container" id="product-<%= product.id %>">
-          <div class="product">
-          <% if product.aasm_state == "to_buy" %>
-            <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-              <span class="material-icons" id="checkbox">check_box_outline_blank</span>
-            <% end %>
-            <div class="product-photo"></div>
-              <% if product.photo.attached? %>
-                <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
-              <% end %>
-            </div>
-            <div class="product-info">
-              <p id="product-name"><%= product.name %></p>
-            </div>
-          <% else %>
-            <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-              <span class="material-icons lime-text text-darken-3" id="checkbox">check_box</span>
-            <% end %>
-            <div class="product-photo"></div>
-              <% if product.photo.attached? %>
-                <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
-              <% end %>
-            </div>
-            <div class="product-info">
-              <p id="product-name" style="text-decoration: line-through"><%= product.name %></p>
-            </div>
-          <% end %>
-          </div>
-        <% end %>
+  <%# <%= render 'products/reminder'%>
+  <div class="list">
+    <% if @products_to_buy.first.nil? %>
+      <div class="msg-empty"><h5>Ajoutez des produits à votre liste de courses!</h5></div>
+      <%= link_to tags_path, id: "panier" do %>
+      <div class="center">
+        <i class="fa-solid fa-basket-shopping" id= "cart-icon" ></i>
+        <i class="material-icons lime-text text-darken-3" id="plus-icon" >add_circle</i>
+      </div>
       <% end %>
-    </div>
+    <% else %>
+
+      <%= render 'products_to_buy'%>
+
+    <% end %>
+  </div>
 </div>
 
 <div class="container" id="navBought">
-
     <div class="list">
       <% if @products_bought_by_filter.first.nil? %>
-      <div class="msg-empty"><h4>Time to do some shopping!</h4></div>
-
+      <div class="msg-empty"><h5>Cochez les produits achetés et retrouvez les ici!</h5></div>
       <% else %>
-        <div class="btn-container">
+        <div class="btn-container" id="btn-finish">
           <%= link_to "Finish my shopping", lists_path, method: "post", class: "btn lime darken-3" %>
         </div>
-        <% @products_bought_by_filter.each do |product| %>
-          <div class="list-item-container" id="product-<%= product.id %>">
-          <div class="product">
-          <% if product.aasm_state == "to_buy" %>
-            <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-              <span class="material-icons" id="checkbox">check_box_outline_blank</span>
-            <% end %>
-            <div class="product-photo"></div>
-              <% if product.photo.attached? %>
-                <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
-              <% end %>
-            </div>
-            <div class="product-info">
-              <p id="product-name"><%= product.name %></p>
-            </div>
-          <% else %>
-            <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-              <span class="material-icons lime-text text-darken-3" id="checkbox">check_box</span>
-            <% end %>
-            <div class="product-photo"></div>
-              <% if product.photo.attached? %>
-                <%= cl_image_tag product.photo.key, class: "list-photo", crop: :fill %>
-              <% end %>
-            </div>
-            <div class="product-info">
-              <p id="product-name" style="text-decoration: line-through"><%= product.name %></p>
-            </div>
+        <%= render 'products_bought'%>
 
-          <% end %>
-          </div>
-        <% end %>
+
       <% end %>
     </div>
   </div>
-
-  <div class="fixed-action-btn" id="floating-btn">
-    <%= link_to lists_path, method: "post", class: "mdc-fab btn-floating btn-large lime darken-3" do %>
-      <i class="large material-icons">done</i>
-    <%end %>
-  </div>
-
 </div>

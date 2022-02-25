@@ -22,7 +22,7 @@ class TagsController < ApplicationController
   end
 
   def filters
-    @filters = policy_scope(Tag).order(created_at: :desc)
+    @filters = policy_scope(Tag).order(name: :asc)
     authorize @filters
   end
 
@@ -35,6 +35,7 @@ class TagsController < ApplicationController
       @products_all_by_filter = @filter.products.select { |product| product.aasm_state == "bought" || product.aasm_state == "to_buy" }
       @products_to_buy_by_filter = @products_all_by_filter.select { |product| product.aasm_state == "to_buy" }
       @products_bought_by_filter = @products_all_by_filter.select { |product| product.aasm_state == "bought" }
+      @products_all_by_filter = @products_to_buy_by_filter + @products_bought_by_filter
     end
   end
 

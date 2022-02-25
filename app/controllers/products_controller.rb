@@ -63,10 +63,13 @@ class ProductsController < ApplicationController
   end
 
   def buy
+    @filter = Tag.find(params[:id])
+    authorize @filter
     @product = Product.find(params[:id])
     authorize @product
     @product.buy
     @product.save
+    # redirect_to filter_tag_path(@filter, anchor: "product-#{ @product.id }")
     redirect_to products_path(anchor: "product-#{ @product.id }")
   end
 
