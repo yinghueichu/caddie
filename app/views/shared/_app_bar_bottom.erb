@@ -5,7 +5,7 @@
         <span class="material-icons lime-text text-darken-3 app-bar-item icon-bottom" id="receipt-long">receipt_long</span>
         <div data-controller="select">
           <% unless @products_to_buy.count == 0 %>
-            <div class="number-products-bought"><span id="number-products-bought-text" data-select-target="productCount"><%= @products_to_buy.count %></span></div>
+            <div id="number-products-bought"><span id="number-products-bought-text" data-select-target="productCount"><%= @products_to_buy.count %></span></div>
           <% end %>
         </div>
       <% end %>
