@@ -274,7 +274,7 @@ saumon = Product.find_by_name("Saumon")
 saumon.photo.attach(io: file_saumon, filename: "Saumon_jpsitg.jpg")
 
 file_sac = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644826680/development/Sac_gizamd.jpg")
-sac = Product.find_by_name("Sacs")
+sac = Product.find_by_name("Sacs poubelle")
 sac.photo.attach(io: file_sac, filename: "Sac_gizamd.jpg")
 
 file_savon = URI.open("https://res.cloudinary.com/yinghueichu/image/upload/v1644825642/development/nst5bhzkd44u8hfp4vacnpkw3de9.jpg")
@@ -605,7 +605,7 @@ ProductTag.create!([
   { product_id: (Product.find_by_name("Saumon").id),
     tag_id: (Tag.find_by_name("Poisson").id)
   },
-  { product_id: (Product.find_by_name("Sacs").id),
+  { product_id: (Product.find_by_name("Sacs poubelle").id),
     tag_id: (Tag.find_by_name("Produits d'entretien").id)
   },
   { product_id: (Product.find_by_name("Savon").id),
