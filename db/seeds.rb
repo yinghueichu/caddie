@@ -138,7 +138,7 @@ Product.create!([
   { name: "Saumon",
     user_id: User.first.id
   },
-  { name: "Sacs",
+  { name: "Sacs poubelle",
     frequency: 7,
     aasm_state: :to_buy,
     user_id: User.first.id
