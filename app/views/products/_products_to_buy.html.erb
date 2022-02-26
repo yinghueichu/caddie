@@ -3,7 +3,7 @@
                 <div class="list-item-container" id="product-<%= product.id%>">
                   <div class="product">
 
-                    <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
+                    <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true, data: {controller: "form", action: "click->form#submit"} do %>
                       <span class="material-icons" id="checkbox">check_box_outline_blank</span>
                     <% end %>
                     <%= link_to edit_product_path(product), class: "link-block" do %>
@@ -31,7 +31,7 @@
                   <div class="product">
 
 
-                    <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
+                    <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true, data: {controller: "form", action: "click->form#submit"} do %>
                       <span class="material-icons" id="checkbox-ticked">check_box</span>
                     <% end %>
                     <%= link_to edit_product_path(product), class: "link-block" do %>
