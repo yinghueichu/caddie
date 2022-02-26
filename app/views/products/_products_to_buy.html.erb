@@ -1,7 +1,5 @@
 <% @products_to_buy.each do |product| %>
-  <% if product.frequency == nil %>
-
-              <% if product.aasm_state == "to_buy"%>
+              <% if product.aasm_state == "to_buy" && product.frequency == nil %>
                 <div class="list-item-container" id="product-<%= product.id%>">
                   <div class="product">
 
@@ -27,13 +25,14 @@
 
                   </div>
                 </div>
+              <% elsif product.aasm_state == "to_buy" && product.frequency != nil %>
               <% else %>
-                <div class="list-item-container" id="product-<%= product.id%>">
+                <div class="list-item-container-bought" id="product-<%= product.id%>">
                   <div class="product">
 
 
                     <%= link_to buy_product_path(product), class: "checkbox-link", method: :patch, remote: true do %>
-                      <span class="material-icons lime-text text-darken-3" id="checkbox">check_box</span>
+                      <span class="material-icons" id="checkbox-ticked">check_box</span>
                     <% end %>
                     <%= link_to edit_product_path(product), class: "link-block" do %>
                       <div class="product-photo">
@@ -58,4 +57,3 @@
               <% end %>
 
         <% end %>
- <% end %>

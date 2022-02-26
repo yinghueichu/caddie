@@ -22,6 +22,10 @@ class Product < ApplicationRecord
       transitions from: :archive, to: :to_buy
     end
 
+    event :buy_remind do
+      transitions from: :archive, to: :bought
+    end
+
     event :archive do
       transitions from: :bought, to: :archive
     end

@@ -1,7 +1,5 @@
 <% @products_bought.each do |product| %>
-  <% if product.frequency == nil %>
-
-              <% if product.aasm_state == "to_buy"%>
+              <% if product.aasm_state == "to_buy" && product.frequency == nil %>
                 <div class="list-item-container" id="product-<%= product.id%>">
                   <div class="product">
 
@@ -27,6 +25,7 @@
 
                   </div>
                 </div>
+              <% elsif product.aasm_state == "to_buy" && product.frequency != nil %>
               <% else %>
                 <div class="list-item-container-bought" id="product-<%= product.id%>">
                   <div class="product">
@@ -58,4 +57,3 @@
               <% end %>
 
         <% end %>
- <% end %>

@@ -1,6 +1,6 @@
 
 <% @products.each do |product| %>
-  <% if product.aasm_state != "bought" && product.aasm_state = "to_buy" %>
+  <% if product.aasm_state != "bought" && product.aasm_state == "to_buy" %>
     <% if product.frequency && !product.lists.empty? %>
       <% last = product.lists.last.created_at %>
       <% if last < product.frequency.days.ago %>
