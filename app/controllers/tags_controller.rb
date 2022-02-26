@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   def index
-    @tags_category = Tag.all.where(group_name: "category")
+    @tags_category = Tag.all.where(group_name: "category").order(:name)
     @products_to_buy = policy_scope(Product).select { |product| product.aasm_state == "to_buy" }
 
     @query = params[:query]
